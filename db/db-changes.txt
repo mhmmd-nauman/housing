@@ -1,0 +1,2 @@
+
+ALTER TABLE `product` ADD `qty` INT(11) NULL AFTER `bo_id`;
