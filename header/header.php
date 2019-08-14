@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="icon" href="http://localhost/front-site/assets/img/boutique.png" type="image/x-icon"/>
+    <link rel="icon" href="http://localhost/housing/assets/img/boutique.png" type="image/x-icon"/>
     <title>E-BOTIUQUE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -48,16 +48,16 @@
         <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
         <div class="w3-container w3-display-container w3-gray w3-padding-16">
           <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-          <img src="http://localhost/front-site/assets/img/boutique.png" alt="boutique" width="40%"><h3 class="w3-large"><b>E-BOTIUQUE</b></h3>
+          <img src="http://localhost/housing/assets/img/boutique.png" alt="boutique" width="40%"><h3 class="w3-large"><b>E-BOTIUQUE</b></h3>
         </div>
         
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
           
           <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>Lawn</a>
           <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shirtsinbulk fa-fw"></i>Casuals</a> -->
-          <a href="http://localhost/front-site/user_panel/index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cart-plus fa-fw"></i>Cart</a>
+          <a href="http://localhost/housing/user_panel/index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cart-plus fa-fw"></i>Cart</a>
           <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Overview</a> -->
-          <a href="http://localhost/front-site/user_panel/index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+          <a href="http://localhost/housing/user_panel/index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
           
         </div>
         <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
@@ -72,30 +72,30 @@
         <!-- Header -->
         <header class="w3-container w3-center w3-padding-48 w3-white">
           
-          <img src="http://localhost/front-site/assets/img/boutique.png" alt="boutique" width="10%"> <h1 class="w3-xxxlarge"><b>E-BOTIUQUE</b></h1>
-          <h6>Welcome Online <span class="w3-tag">E-BOTIUQUE</span></h6>
+          <img src="http://localhost/housing/assets/img/boutique.png" alt="boutique" width="10%"> <h1 class="w3-xxxlarge"><b>Housing Society Management System</b></h1>
+          <h6>Welcome Online <span class="w3-tag">Housing Society Management System</span></h6>
           <div class="w3-bar w3-border">
-            <a href="http://localhost/front-site/index.php" class="w3-bar-item w3-button">Home</a>
+            <a href="http://localhost/housing/index.php" class="w3-bar-item w3-button">Home</a>
             <?php
             
                   if(isset($_SESSION['uid'])){
                     $d=$_SESSION['uid'];
                     echo '
-                    <a href="http://localhost/front-site/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
+                    <a href="http://localhost/housing/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
                    
                     ';
                     if($d["type"]=="user")
                           {
-                            echo '<a href="http://localhost/front-site/user_panel/index.php" class="w3-bar-item w3-button"><img src="http://localhost/front-site/assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
+                            echo '<a href="http://localhost/housing/user_panel/index.php" class="w3-bar-item w3-button"><img src="http://localhost/housing/assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
                           }
                           else
                           {
-                            echo '<a href="http://localhost/front-site/vendor_panel/index.php" class="w3-bar-item w3-button"><img src="http://localhost/front-site/assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
+                            echo '<a href="http://localhost/housing/vendor_panel/index.php" class="w3-bar-item w3-button"><img src="http://localhost/housing/assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
                           }
                   }else{
                     echo '
-                    <a href="http://localhost/front-site/login.php" class="w3-bar-item w3-button w3-light-grey">Login</a>
-            <a href="http://localhost/front-site/register.php" class="w3-bar-item w3-button">Register</a>
+                    <a href="http://localhost/housing/login.php" class="w3-bar-item w3-button w3-light-grey">Login</a>
+            <a href="http://localhost/housing/register.php" class="w3-bar-item w3-button">Register</a>
                     ';
                   }
               ?>
@@ -107,35 +107,35 @@
         <header class="w3-display-container w3-wide" id="home">
           <!-- Automatic Slideshow Images -->
           <div class="mySlides w3-display-container w3-center">
-            <img src="http://localhost/front-site/assets/img/bg4.jpg" style="width:100%">
+            <img src="http://localhost/housing/assets/img/bg4.jpg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
               <h3>You Choice</h3>
               <p><b>We had the best time playing at Venice Beach!</b></p>
             </div>
           </div>
           <div class="mySlides w3-display-container w3-center">
-            <img src="http://localhost/front-site/assets/img/bg5.jpg" style="width:100%">
+            <img src="http://localhost/housing/assets/img/bg5.jpg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
               <h3>New York</h3>
               <p><b>The atmosphere in New York is lorem ipsum.</b></p>
             </div>
           </div>
           <div class="mySlides w3-display-container w3-center">
-            <img src="http://localhost/front-site/assets/img/bg6.jpg" style="width:100%">
+            <img src="http://localhost/housing/assets/img/bg6.jpg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
               <h3>Chicago</h3>
               <p><b>Thank you, Chicago - A night we won't forget.</b></p>
             </div>
           </div>
           <div class="mySlides w3-display-container w3-center">
-            <img src="http://localhost/front-site/assets/img/bg7.jpeg" style="width:100%">
+            <img src="http://localhost/housing/assets/img/bg7.jpeg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
               <h3>Chicago</h3>
               <p><b>Thank you, Chicago - A night we won't forget.</b></p>
             </div>
           </div>
           <div class="mySlides w3-display-container w3-center">
-            <img src="http://localhost/front-site/assets/img/bg8.jpg" style="width:100%">
+            <img src="http://localhost/housing/assets/img/bg8.jpg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
               <h3>Let`s</h3>
               <p><b>Company</b></p>

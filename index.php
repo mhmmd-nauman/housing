@@ -18,34 +18,7 @@ if(isset($_SESSION['uid'])){
 </div>
 <!-- Product grid -->
 <div class="w3-row">
-<?php
-$sql = "SELECT * FROM `boutique_post` order by `id` DESC";
-$result = $conn->query($sql);
-if ($result->num_rows > 0):
-  while($row = $result->fetch_assoc()):
-    // output data of each row
-     
-?>
-  <div class="w3-col l3 s6">
-    <div class="w3-container">
-      <div class="w3-display-container">
-      <input type="hidden" class="prd_img" name="prd_img" id="prd_img" value="<?=$row['prd_image']?>">
-        <img src="http://localhost/front-site/assets/prd_images/<?=$row['prd_image']?>" style="width:100%">
-        <span class="w3-tag w3-display-topleft"></span>
-        <div class="w3-display-middle w3-display-hover">
-          <button class="w3-button w3-black btn_cart" img="<?=$row['prd_image']?>"  id="<?=$row['id']?>">Buy now <i class="fa fa-shopping-cart"></i></button>
-        </div>
-      </div>
-      <p><?=$row['prd_name']?><br><b>pkr <?=$row['prd_price']?></b></p>
-      <h6 class="w3-opacity">Quality <i class="w3-text-red fa-2x fa fa-pied-piper-alt" aria-hidden="true"></i>  <?=$row['prd_quality']?></h6>
-      <p class="w3-wide"><i class="fa w3-text-blue fa fa-reddit-alien" aria-hidden="true"></i> <?=$row['vendor_name']?></p>
-      <p class="w3-wide"><i class="fa w3-text-orange fa-location-arrow" aria-hidden="true"></i> <?=$row['vendor_city']?></p>
-        <p class="w3-wide w3-opacity"><i class="fa fa-phone w3-text-green" aria-hidden="true"></i> <?=$row['vendor_contact']?></p>
-    </div>
-    
-    
-  </div>
-  <?php endwhile; endif?>
+
  
 </div>
 

@@ -15,7 +15,7 @@ include "header/login_header.php";?>
 </form> -->
 <!-- Header -->
 <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
-  <img class="w3-image" src="http://localhost/front-site/assets/img/lo2.jpg" alt="London" width="1500" height="700">
+  <img class="w3-image" src="http://localhost/housing/assets/img/lo2.jpg" alt="London" width="1500" height="700">
   <div class="w3-display-middle" style="width:65%">
     <div class="w3-bar w3-black">
       <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'login');"><i class="fa fa-user w3-margin-right"></i>login</button>
@@ -39,7 +39,7 @@ include "header/login_header.php";?>
         </div>
         <p class="w3-padding-16"><button type="submit" class="w3-button w3-dark-grey">Login</button></p>
       </form>
-      <a href="http://localhost/front-site/register.php" target="_blank" class="w3-ripple w3-red w3-right ">Register Account</a>
+      <a href="http://localhost/housing/register.php" target="_blank" class="w3-ripple w3-red w3-right ">Register Account</a>
     </div>
     
     
