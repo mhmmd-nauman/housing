@@ -11,35 +11,34 @@ $d=$_SESSION['uid'];
 ?>
 <!-- Header -->
 <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Users</b></h1>
+    <h1 class="w3-jumbo"><b>Society System User</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 <div class="container mt-3">
-<h2>Custom Search</h2>
-  <p>Type something in the input field</p>  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <h2>Custom Search</h2>
+  <p>Type something in the input field</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
-  <table class="table table-bordered w3-responsive" id="Table">
+  <table class="table table-bordered" id="Table">
     <thead>
       <tr>
-      <th>User id</th>
-        <th>Seller id</th>
+        <th> Id</th>
         <th>Name</th>
+        <th>Email</th>
         <th>Cont#</th>
-        <th>Address</th>
-        <th>vendor City</th>
-        <th>Prd.Name</th>
-        <th>qlty/Brand</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th class="w3-text-red">Total</th>
-        <th>Date</th>
+        <th>CNIC</th>
+        <th>User Type</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * FROM `cart`  order by `id` DESC";
+$sql = "SELECT *, login.login_id as id FROM `login` "
+        . " LEFT JOIN users_details ON users_details.login_id = login.login_id"
+        . " where type in('society_officer','admin') "
+        . ";";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
@@ -48,19 +47,13 @@ if ($result->num_rows > 0):
 ?>
    
       <tr>
-      <td><?=$row['user_id']?></td>
-        <td><?=$row['vendor_id']?></td>
-
-        <td><?=$row['customer_name']?></td>
-        <td><?=$row['user_contact']?></td>
-        <td><?=$row['address']?></td>
-        <td><?=$row['vendor_city']?></td>
-        <td><?=$row['prd_name']?></td>
-        <td><?=$row['prd_quality']?></td>
-        <td><?=$row['prd_qty']?></td>
-        <td><?=$row['prd_price']?></td>
-        <td class="w3-text-red"><?=$row['total']?></td>
-        <td><?=$row['date']?></td>
+        <td><?=$row['id']?></td>
+        <td><?=$row['name']?></td>
+        <td><?=$row['email']?></td>
+        <td><?=$row['mobile_number']?></td>
+        <td><?=$row['cnic']?></td>
+        <td><?=$row['type']?></td>
+        <td></td>
 
       </tr>
   <?php endwhile;endif;?>

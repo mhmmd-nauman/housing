@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2019 at 06:27 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Aug 15, 2019 at 09:30 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bottique`
+-- Database: `society_db`
 --
 
 -- --------------------------------------------------------
@@ -91,50 +89,25 @@ INSERT INTO `category` (`categoryid`, `catrgoryname`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
-  `customer_name` varchar(250) DEFAULT NULL,
-  `cnic` varchar(250) DEFAULT NULL,
-  `address` varchar(250) DEFAULT NULL,
-  `mobile_number` varchar(12) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `password` varchar(11) DEFAULT NULL,
-  `image` varchar(345) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `customer_name`, `cnic`, `address`, `mobile_number`, `email`, `password`, `image`) VALUES
-(0, 'rabia is beautiful', '31202-70111746-5', '189/f', '03009687669', 'rabia100789@gmail.com', '03057799830', 'candidate_images/Koala-jpg.jpg'),
-(1253, 'rabia is beautiful', '31202-70111746-4', '189/f', '03009687669', 'rabia100789@gmail.com', '03057799830', 'candidate_images/Chrysanthemum-jpg.jpg'),
-(1254, 'rabia', '31202-70111746-3', '189/f', '03009687669', 'rabia100789@gmail.com', '03057799830', NULL),
-(1255, 'rabia hameed', '31202-70111746-5', '189/f', '03009687669', 'rabia100789@gmail.com', '03057799830', NULL),
-(1256, 'rabia hameed', '31202-70111746-5', '189/f', '03009687669', 'rabia100789@gmail.com', '03057799830', NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
-  `login_id` int(11) DEFAULT NULL,
+  `login_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `email` varchar(11) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `type` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`login_id`, `name`, `password`, `email`) VALUES
-(12, '', '', '');
+INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`) VALUES
+(1, 'Nauman', '1234', 'nauman@gmail.com', 'society_officer'),
+(12, 'Saima', '1234', 'saima@gmail.com', 'admin'),
+(13, 'Member', '1234', 'member@gmail.com', 'member');
 
 -- --------------------------------------------------------
 
@@ -217,6 +190,30 @@ CREATE TABLE `receipt` (
 INSERT INTO `receipt` (`receiptid`, `customerid`, `orderid`, `due-date`, `issudate`, `totalamount`, `image`) VALUES
 (8, 0, '', '', '', '', 'candidate_images/Chrysanthemum-jpg.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_details`
+--
+
+CREATE TABLE `users_details` (
+  `id` int(11) NOT NULL,
+  `login_id` int(11) DEFAULT NULL,
+  `cnic` varchar(250) DEFAULT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `mobile_number` varchar(12) DEFAULT NULL,
+  `image` varchar(345) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users_details`
+--
+
+INSERT INTO `users_details` (`id`, `login_id`, `cnic`, `address`, `mobile_number`, `image`) VALUES
+(1, 1, '123456789', '195 f', '031388888', 'eee'),
+(2, 12, '66565555465456', 'tet', '6666', 'hhh'),
+(3, 13, '234245425', '234', '234324', '234');
+
 --
 -- Indexes for dumped tables
 --
@@ -240,10 +237,10 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryid`);
 
 --
--- Indexes for table `customer`
+-- Indexes for table `login`
 --
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`login_id`);
 
 --
 -- Indexes for table `logintype`
@@ -270,6 +267,12 @@ ALTER TABLE `receipt`
   ADD PRIMARY KEY (`receiptid`);
 
 --
+-- Indexes for table `users_details`
+--
+ALTER TABLE `users_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -278,50 +281,46 @@ ALTER TABLE `receipt`
 --
 ALTER TABLE `bottiqueowner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `boutique_order`
 --
 ALTER TABLE `boutique_order`
   MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT for table `login`
 --
-ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1257;
-
+ALTER TABLE `login`
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `logintype`
 --
 ALTER TABLE `logintype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
-
 --
 -- AUTO_INCREMENT for table `receipt`
 --
 ALTER TABLE `receipt`
   MODIFY `receiptid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-COMMIT;
-
+--
+-- AUTO_INCREMENT for table `users_details`
+--
+ALTER TABLE `users_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

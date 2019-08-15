@@ -12,7 +12,7 @@ class cout_rows {
   public $conn;
   public function __construct($tbl_name,$type,$conn) {
      $sql = "SELECT  * FROM ".$tbl_name." WHERE type= '".$type."'";
- $result = $conn->query($sql);
+ $result = $conn->query($sql)or die($sql." ".$conn->error.__LINE__);
  echo $this->rslt = $result->num_rows;
     //$this->param = $param;
   }
@@ -29,14 +29,14 @@ class cout_rows {
       <?php
      
       
-      $count_data = new cout_rows('customer','user',$conn);
+      $count_data = new cout_rows('login','society_officer',$conn);
        $count_data->rslt; // foobar
      
       ?>
           <h3></h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Total Users</h4>
+        <h4>Total Society Officer</h4>
       </div>
     </div>
     <div class="w3-quarter">
@@ -46,13 +46,13 @@ class cout_rows {
           <h3><?php
      
       
-     $count_data = new cout_rows('customer','seller',$conn);
+     $count_data = new cout_rows('login','member',$conn);
       $count_data->rslt; // foobar
     
      ?></h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Seller</h4>
+        <h4>Members</h4>
       </div>
     </div>
     <div class="w3-quarter">
@@ -62,7 +62,7 @@ class cout_rows {
           <h3><?php
      
       
-     $count_data = new cout_rows('customer','admin',$conn);
+     $count_data = new cout_rows('login','admin',$conn);
       $count_data->rslt; // foobar
     
      ?></h3>

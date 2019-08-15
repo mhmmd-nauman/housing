@@ -2,12 +2,14 @@
 session_start();
 if(isset($_SESSION['uid'])){
     $d=$_SESSION['uid'];
+   // print_r($d);
+   // exit();
     ?>
     <!DOCTYPE html>
 <html>
-<title>E-Boutique</title>
+<title>Housing Society Management System</title>
 <meta charset="UTF-8">
-<link rel="icon" href="http://localhost/front-site/assets/img/boutique.png" type="image/x-icon"/>
+<link rel="icon" href="http://localhost/housing/assets/img/boutique.png" type="image/x-icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -33,16 +35,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="http://localhost/front-site/assets/dataimg/<?=$d['image']?>" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="http://localhost/housing/assets/dataimg/stladmin1.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong><?= $d['customer_name'];?></strong></span><br>
-      <strong><?= $d['city'];?></strong><br>
+      <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
+      <br>
       
-      <a href="http://localhost/front-site/index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+      <a href="http://localhost/housing/index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
-      <a href="http://localhost/front-site/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
+      <a href="http://localhost/housing/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
     </div>
   </div>
   <hr>
@@ -52,8 +54,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
 
-    <a href="seller_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>   Seller Detail</a>
-    <a href="user_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-book fa-fw"></i>User Detail</a>
+    <a href="society_officer_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>   Society System Users Detail</a>
+    <a href="member_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-book fa-fw"></i>Member Detail</a>
 
     
  
@@ -68,7 +70,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
     <?php
         $d=$_SESSION['uid'];
-        echo $d['customer_name'];
+        echo $d['name'];
         
         
    } else {

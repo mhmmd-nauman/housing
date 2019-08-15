@@ -1,11 +1,14 @@
 <?php
 session_start();
 require_once "db.php";
-echo $email = $_POST['email'];
-echo $password = $_POST['password'];
-$sql = "SELECT * FROM `customer` where `email`='$email' and `password` = '$password';";
+$email = $_POST['email'];
+$password = $_POST['password'];
+$sql = "SELECT * FROM `login` where `email`='$email' and `password` = '$password';";
+//exit();
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+//print_r($row);
+//exit();
 if(!empty($row['email'])){
        $d=$_SESSION['uid'] = $row;
        
