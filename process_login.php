@@ -12,15 +12,15 @@ $row = $result->fetch_assoc();
 if(!empty($row['email'])){
        $d=$_SESSION['uid'] = $row;
        
-       if($d['type'] == "seller"){
-        header('location:vendor_panel/post.php');
+       if($d['type'] == "society_officer"){
+        header('location:society_office_user_panel/');
     }
     elseif($d['type'] == "admin"){
         header('location:admin_panel/index.php');
     }
     else{
         
-        header('location:user_panel/index.php');
+        header('location:member_panel/index.php');
     }
 }else{
 	echo " <script>

@@ -41,7 +41,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
       <br>
       
-      <a href="http://localhost/housing/index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+      <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
       <a href="http://localhost/housing/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
