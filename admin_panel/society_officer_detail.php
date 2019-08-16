@@ -2,7 +2,27 @@
 
 include "admin_header.php";
 require_once "../db.php";
-   
+
+if(isset($_REQUEST['action'])){
+    switch($_REQUEST['action']){
+        case"block":
+           $sql = " update `login` set status = 'blocked' where login_id = '".$_REQUEST['id']."';";
+           $conn->query($sql);
+           break;
+        case"approve":
+           $sql = " update `login` set status = 'Active' where login_id = '".$_REQUEST['id']."';";
+           $conn->query($sql);
+           break;
+        case"delete":
+            $sql = " delete from `login` where login_id = '".$_REQUEST['id']."';"
+                . " ";
+            $conn->query($sql);
+            $sql = "delete from `users_details` where login_id = '".$_REQUEST['id']."';";
+            $conn->query($sql);
+           break;
+    }
+}
+
 $d=$_SESSION['uid'];
 
         
@@ -29,6 +49,7 @@ $d=$_SESSION['uid'];
         <th>Cont#</th>
         <th>CNIC</th>
         <th>User Type</th>
+        <th>Status</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -46,44 +67,45 @@ if ($result->num_rows > 0):
      
 ?>
    
-      <tr>
+        <tr <?php if($row['status'] =="blocked")echo"class='danger'";?>>
         <td><?=$row['id']?></td>
         <td><?=$row['name']?></td>
         <td><?=$row['email']?></td>
         <td><?=$row['mobile_number']?></td>
         <td><?=$row['cnic']?></td>
         <td><?=$row['type']?></td>
+        <td><?=$row['status']?></td>
         <td>
             <div class = "dropdown">
    
-   <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-      Topics
-      <span class = "caret"></span>
-   </button>
+                <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
+                   Action
+                   <span class = "caret"></span>
+                </button>
    
-   <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-      <li role = "presentation">
-         <a role = "menuitem" tabindex = "-1" href = "#">Java</a>
-      </li>
-      
-      <li role = "presentation">
-         <a role = "menuitem" tabindex = "-1" href = "#">Data Mining</a>
-      </li>
-      
-      <li role = "presentation">
-         <a role = "menuitem" tabindex = "-1" href = "#">
-            Data Communication/Networking
-         </a>
-      </li>
-      
-      <li role = "presentation" class = "divider"></li>
-      
-      <li role = "presentation">
-         <a role = "menuitem" tabindex = "-1" href = "#">Separated link</a>
-      </li>
-   </ul>
+                <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=approve&id=<?=$row['id']?>" onclick="return confirmAction();">Approve</a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=block&id=<?=$row['id']?>" onclick="return confirmAction();">Block</a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                       <a role = "menuitem" tabindex = "-1" href = "?action=edit&id=<?=$row['id']?>" >
+                         Edit
+                      </a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=delete&id=<?=$row['id']?>" onclick="return confirmAction();">
+                         Delete
+                      </a>
+                   </li> 
+                </ul>
    
-</div>
+            </div>
         </td>
 
       </tr>
@@ -98,7 +120,17 @@ if ($result->num_rows > 0):
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
 <script>
+    function confirmAction(){
+        if(confirm("Are you sure to complete the action?")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 $(document).ready(function(){
+    
+    
+    
     var orderdataTable = $('#Table').DataTable({
 				"columnDefs":[],
 			});

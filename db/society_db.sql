@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2019 at 09:30 AM
+-- Generation Time: Aug 16, 2019 at 08:32 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -97,17 +97,18 @@ CREATE TABLE `login` (
   `name` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `type` varchar(15) DEFAULT NULL
+  `type` varchar(15) DEFAULT NULL,
+  `status` varchar(10) DEFAULT 'blocked'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`) VALUES
-(1, 'Nauman', '1234', 'nauman@gmail.com', 'society_officer'),
-(12, 'Saima', '1234', 'saima@gmail.com', 'admin'),
-(13, 'Member', '1234', 'member@gmail.com', 'member');
+INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) VALUES
+(1, 'Nauman', '1234', 'nauman@gmail.com', 'society_officer', 'blocked'),
+(12, 'Saima', '1234', 'saima@gmail.com', 'admin', 'Active'),
+(13, 'Member', '1234', 'member@gmail.com', 'member', 'blocked');
 
 -- --------------------------------------------------------
 
@@ -295,7 +296,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `logintype`
 --
@@ -320,7 +321,7 @@ ALTER TABLE `receipt`
 -- AUTO_INCREMENT for table `users_details`
 --
 ALTER TABLE `users_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -5,7 +5,25 @@ require_once "../db.php";
    
 $d=$_SESSION['uid'];
 
-        
+if(isset($_REQUEST['action'])){
+    switch($_REQUEST['action']){
+        case"block":
+           $sql = " update `login` set status = 'blocked' where login_id = '".$_REQUEST['id']."';";
+           $conn->query($sql);
+           break;
+        case"approve":
+           $sql = " update `login` set status = 'Active' where login_id = '".$_REQUEST['id']."';";
+           $conn->query($sql);
+           break;
+        case"delete":
+            $sql = " delete from `login` where login_id = '".$_REQUEST['id']."';"
+                . " ";
+            $conn->query($sql);
+            $sql = "delete from `users_details` where login_id = '".$_REQUEST['id']."';";
+            $conn->query($sql);
+           break;
+    }
+}      
         
    
 ?>
@@ -28,6 +46,7 @@ $d=$_SESSION['uid'];
         <th>Email</th>
         <th>Cont#</th>
         <th>CNIC</th>
+        <th>Status</th>
         <th>Action</th>
         
       </tr>
@@ -52,7 +71,37 @@ if ($result->num_rows > 0):
         <td><?=$row['email']?></td>
         <td><?=$row['mobile_number']?></td>
         <td><?=$row['cnic']?></td>
-        <td></td>
+        <td><?=$row['status']?></td>
+        <td><div class = "dropdown">
+   
+                <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
+                   Action
+                   <span class = "caret"></span>
+                </button>
+   
+                <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=approve&id=<?=$row['id']?>" onclick="return confirmAction();">Approve</a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=block&id=<?=$row['id']?>" onclick="return confirmAction();">Block</a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                       <a role = "menuitem" tabindex = "-1" href = "?action=edit&id=<?=$row['id']?>" >
+                         Edit
+                      </a>
+                   </li>
+                   <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation">
+                      <a role = "menuitem" tabindex = "-1" href = "?action=delete&id=<?=$row['id']?>" onclick="return confirmAction();">
+                         Delete
+                      </a>
+                   </li> 
+                </ul>
+   
+            </div></td>
         
 
       </tr>
@@ -67,6 +116,13 @@ if ($result->num_rows > 0):
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
 <script>
+    function confirmAction(){
+        if(confirm("Are you sure to complete the action?")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 $(document).ready(function(){
     var orderdataTable = $('#Table').DataTable({
 				"columnDefs":[],
