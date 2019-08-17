@@ -59,19 +59,23 @@ include "header/login_header.php";?>
           </div>
           <div class="col-sm-6" style="">
             
-            <div class="form-group">
-              <label for="bname">Business Name</label>
-              <input type="text" class="form-control" id="bname" placeholder="Business Name" name="bname" required>
-              <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
+            
             <div class="form-group">
               <label for="cnic">CNIC:</label>
               <input type="number" class="form-control" maxlength="15" minlength="13" id="cnic" placeholder="CNIC#" name="cnic" required>
               <div class="valid-feedback">Valid.</div>
               <div class="invalid-feedback">Please fill out this field.</div>
             </div>
-            
+            <div class="form-group">
+              <label for="type">Select Role:</label>
+              <select class="form-control" name="type" id="type" required>
+                <option></option>
+                <option value="member">Member</option>
+                <option value="society_officer">Society Officer</option>
+              </select>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
             
             
           </div>
@@ -97,16 +101,7 @@ include "header/login_header.php";?>
           </div>
           <div class="col-sm-6" style="">
             
-            <div class="form-group">
-              <label for="type">Select Role:</label>
-              <select class="form-control" name="type" id="type" required>
-                <option></option>
-                <option value="user">user</option>
-                <option value="seller">seller</option>
-              </select>
-              <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
+            
             
             <div class="form-group">
               <label for="address">Address:</label>
@@ -119,21 +114,8 @@ include "header/login_header.php";?>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-3">
-            
-            
-            
-          <div class="custom-file">
-    <input type="file" class="custom-file-input" name="fileToUpload" id="customFile">
-    <label class="custom-file-label" for="customFile">Choose file</label>
-  </div>
-            
-            
-            
-            
-            
-          </div>
-          <div class="col-sm-3">
+          
+          <div class="col-sm-6">
           <div class="form-group">
               <label for="city">City:</label>
               <input type="text" class="form-control" id="city" placeholder="city" name="city" required>

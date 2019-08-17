@@ -3,7 +3,7 @@ session_start();
 require_once "db.php";
 $email = $_POST['email'];
 $password = $_POST['password'];
-$sql = "SELECT * FROM `login` where `email`='$email' and `password` = '$password';";
+$sql = "SELECT * FROM `login` where `email`='$email' and `password` = '$password' and status = 'Active';";
 //exit();
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -24,7 +24,7 @@ if(!empty($row['email'])){
     }
 }else{
 	echo " <script>
-    alert('USERNAME Or PASSWORD don`t Corrrect');
+    alert('USERNAME/PASSWORD is not valid Or Your account is not approved yet, Please contact society office admin for approval');
     window.open('login.php','_self');
 </script>";
 }

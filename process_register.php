@@ -9,101 +9,43 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $type = $_POST['type'];
 $city = $_POST['city'];
-$image = $_FILES['fileToUpload']['name'];
 
 
-// $sql = "INSERT INTO `customer` (`customer_name`, `cnic`, "
-//         . " `address`, `mobile_number`, "
-//         . " `email`, `password`, `image`) "
-//         . "  VALUES "
-//         . " (NULL, "
-//         . " '$fullname', "
-//         . " '$cnic', "
-//         . " '$address', "
-//         . " '$contact', "
-//         . " '$email', "
-//         . " '$password', "
-//         . " '');";
-// $result = $conn->query($sql);
-//$row = $result->fetch_assoc();
-
-
-// header("Location:index.php?message=success&text=Account created successfuly");
-$query_db="SELECT * FROM customer WHERE `email`='$email'";
+$query_db="SELECT * FROM login WHERE `email`='$email'";
         $query=$conn->query($query_db);
         $numrow=$query->num_rows;
         if($numrow<=0){
-$target_dir = "assets/dataimg/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-
-                    // ****Check if image file is a actual image or fake image****//
-
-        if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-        }
-
-                            // ****Check if file already exists**** //
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-                    // **** Check file size ****//
-        if ($_FILES["fileToUpload"]["size"] > 10000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-             //****/ Allow certain file formats ****//
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-        } else 
-            {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+           
+            $sql = "
                 
-                    $sql = "INSERT INTO customer (customer_name,city, cnic, email,address,mobile_number,image,password,type)
-            VALUES ('$fullname', '$city','$cnic', '$email','$address','$contact','$image','$password','$type')";
+            INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) 
+            VALUES (NULL, '$fullname', '$password', '$email', '$type', 'blocked');
+
+            ";
 
             if ($conn->query($sql) === TRUE){
                 $id = $conn->insert_id;
+                $sql_details="INSERT INTO `users_details` (`id`, `login_id`, `cnic`, `address`, `mobile_number`, `image`) 
+                VALUES (NULL, '$id', '$cnic', '$address', '$contact', '');";
+                $conn->query($sql_details);
                 $d=$_SESSION['uid'] = array(
                     'email'=>$email,
-                    'customer_name'=>$fullname,
+                    'name'=>$fullname,
                     'id'=>$id,
                     'type'=>$type,
                     'image'=>$image,
                     'city'=>$city 
                 );
-                if($d['type'] == "seller"){
-                    header('location:vendor_panel/index.php');
+                if($d['type'] == "society_officer"){
+                    header('location:society_office_user_panel/index.php');
                 }else{
-                    header('location:user_panel/index.php');
+                    header('location:member_panel/index.php');
                 }
                 
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-                $conn->close();
-                
-                } else {
-                    echo "Sorry, there was an error uploading your file.";
-                }
-            }
+                $conn->close();  
         }
         else{
             ?>
