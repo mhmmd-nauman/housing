@@ -9,7 +9,7 @@ if(isset($_SESSION['uid'])){
 <html>
 <title>Housing Admin</title>
 <meta charset="UTF-8">
-<link rel="icon" href="http://localhost/housing/assets/img/logo.png" type="image/x-icon"/>
+<link rel="icon" href="http://localhost/mhousing/assets/img/logo.png" type="image/x-icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -25,16 +25,16 @@ if(isset($_SESSION['uid'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="icon" href="http://localhost/housing/assets/img/logo.png" type="image/x-icon"/>
+    <link rel="icon" href="http://localhost/mhousing/assets/img/logo.png" type="image/x-icon"/>
     <title>Housing</title>
-    <link rel="stylesheet" href="http://localhost/housing/assets/css/bootstrap.min.css">
-    <script src="http://localhost/housing/assets/js/jquery.min.js"></script>
-    <script src="http://localhost/housing/assets/js/popper.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/mhousing/assets/css/bootstrap.min.css">
+    <script src="http://localhost/mhousing/assets/js/jquery.min.js"></script>
+    <script src="http://localhost/mhousing/assets/js/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="http://localhost/housing/assets/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="http://localhost/housing/assets/css/w3.css">
+    <script src="http://localhost/mhousing/assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/mhousing/assets/css/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="http://localhost/housing/assets/css/w3-theme-light-green.css">
+    <link rel="stylesheet" href="http://localhost/mhousing/assets/css/w3-theme-light-green.css">
     <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
@@ -54,15 +54,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="http://localhost/housing/assets/ads/admin.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="http://localhost/mhousing/assets/ads/admin.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
       <br>
       
-      <a href="http://localhost/housing/index.php" class="w3-bar-item w3-text-red w3-button"><i class="fa fa-home"></i> Home</a>
+      <a href="http://localhost/mhousing/index.php" class="w3-bar-item w3-text-red w3-button"><i class="fa fa-home"></i> Home</a>
       
-      <a href="http://localhost/housing/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
+      <a href="http://localhost/mhousing/signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
     </div>
   </div>
   <hr>
@@ -73,14 +73,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
 
     
-    <a href="member_detail.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-users fa-fw"></i>Member Detail</a>
+    <a href="member_detail.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-users fa-fw"></i>View Members</a>
 
-    
-
-  
-    <a href="./sofficer_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i>  My Property</a>
-    <a href="./all_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i><i class="fa fa-home w3-text-green fa-fw"></i> All Property</a>
-        <a href="./addproperty.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green fa-fw"></i>Add Property</a>
+    <a href="./all_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i> All Plots</a>
+        <a data-toggle="modal" href="./addproperty.php" class="w3-bar-item w3-button w3-padding" data-target="#addPlotModal"><i class="fa fa-plus w3-text-green fa-fw"></i>Add Plot</a>
          <a href="./transfer_history.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green fa-fw"></i>Transfer History</a>
   </div>
 </nav>
@@ -93,7 +89,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
     <?php
         $d=$_SESSION['uid'];
-        echo $d['name'];
+       // echo $d['name'];
         
         
    } else {
@@ -131,7 +127,7 @@ $(document).ready(function(){
 
   $.ajax({
                     
-                    url: "http://localhost/housing/function.php/new_req_alert()",
+                    url: "http://localhost/mhousing/function.php/new_req_alert()",
                     method: "POST",
                         
                         success: function(data){

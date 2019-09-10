@@ -69,7 +69,7 @@ include "header/header.php";?>
             <div class="form-group">
               <label for="type">Select Role:</label>
               <select class="form-control" name="type" id="type" required>
-                <option></option>
+                  <option value=""> Select One</option>
                 <option value="member">Member</option>
                 <option value="society_officer">Society Officer</option>
               </select>

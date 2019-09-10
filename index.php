@@ -19,41 +19,41 @@ if(isset($_SESSION['uid'])){
   </ul>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="http://localhost/housing/assets/img/banner10.jpg" alt="Los Angeles" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner10.jpg" alt="Los Angeles" width="1100" height="500">
       <div class="carousel-caption">
         
         <h2>We had such a great time in LA!</h2>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost/housing/assets/img/banner2.jpg" alt="slideshow" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner2.jpg" alt="slideshow" width="1100" height="500">
       <div class="carousel-caption">
         
       </div>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost/housing/assets/img/banner3.jpg" alt="Your Own home" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner3.jpg" alt="Your Own home" width="1100" height="500">
       <div class="carousel-caption">
         <h1>your Future</h1>
         <p>We love the Big Apple!</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost/housing/assets/img/banner6.jpg" alt="Your Own home" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner6.jpg" alt="Your Own home" width="1100" height="500">
       <div class="carousel-caption">
         <h1>your Future</h1>
         <p>We love the Big Apple!</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost/housing/assets/img/banner7.jpg" alt="Your Own home" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner7.jpg" alt="Your Own home" width="1100" height="500">
       <div class="carousel-caption">
         <h1>your Future</h1>
         <p>We love the Big Apple!</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost/housing/assets/img/banner1.jpg" alt="Your Own home" width="1100" height="500">
+      <img src="http://localhost/mhousing/assets/img/banner1.jpg" alt="Your Own home" width="1100" height="500">
       <div class="carousel-caption">
         <h1>your Future</h1>
         <p>We love the Big Apple!</p>
@@ -81,7 +81,7 @@ if(isset($_SESSION['uid'])){
         <div class="w3-container">
           <h4 class="w3-center"><?= $d['name']?></h4>
           <p class="w3-center"><?= $d['email']?></p>
-          <p class="w3-center"><img src="http://localhost/housing/assets/ads/<?php
+          <p class="w3-center"><img src="http://localhost/mhousing/assets/ads/<?php
             if($d['type']=='member'){
               echo 'user.png';
             }else{
@@ -103,12 +103,12 @@ if(isset($_SESSION['uid'])){
       
       <!-- Alert Box -->
       <div class="w3-container  w3-hide-medium w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom ">
-        <img src="http://localhost/housing/assets/ads/ad9.gif" alt="ads">
+        <img src="http://localhost/mhousing/assets/ads/ad9.gif" alt="ads">
       </div>
       
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <img src="http://localhost/housing/assets/ads/ad8.gif" alt="ads" width="340px" height="230px">
+          <img src="http://localhost/mhousing/assets/ads/ad8.gif" alt="ads" width="340px" height="230px">
           <!-- <p>Upcoming Events:</p>
           <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
           <p><strong>Holiday</strong></p>
@@ -121,7 +121,7 @@ if(isset($_SESSION['uid'])){
         <div class="w3-row">
           <div class="w3-col m6">
             <div class="w3-container">
-              <img src="http://localhost/housing/assets/ads/add12.jpeg" alt="Your Own home" width="150px" height="500px">
+              <img src="http://localhost/mhousing/assets/ads/add12.jpeg" alt="Your Own home" width="150px" height="500px">
               <!-- <p>Upcoming Events:</p>
               <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
               <p><strong>Holiday</strong></p>
@@ -131,7 +131,7 @@ if(isset($_SESSION['uid'])){
           </div>
           <div class="w3-col m6">
             <div class="w3-container">
-              <img src="http://localhost/housing/assets/ads/add11.gif" alt="Your Own home" width="120px" height="500px">
+              <img src="http://localhost/mhousing/assets/ads/add11.gif" alt="Your Own home" width="120px" height="500px">
               <!-- <p>Upcoming Events:</p>
               <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
               <p><strong>Holiday</strong></p>
@@ -180,7 +180,7 @@ if(isset($_SESSION['uid'])){
       <br>
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <img src="http://localhost/housing/assets/ads/ad1.gif" alt="Your Own home" width="230px" height="230px">
+          <img src="http://localhost/mhousing/assets/ads/ad1.gif" alt="Your Own home" width="230px" height="230px">
           <!-- <p>Upcoming Events:</p>
           <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
           <p><strong>Holiday</strong></p>
@@ -197,7 +197,7 @@ if(isset($_SESSION['uid'])){
       
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <img src="http://localhost/housing/assets/ads/ad2.gif" alt="Your Own home" width="230px" height="230px">
+          <img src="http://localhost/mhousing/assets/ads/ad2.gif" alt="Your Own home" width="230px" height="230px">
           <!-- <p>Upcoming Events:</p>
           <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
           <p><strong>Holiday</strong></p>
@@ -210,7 +210,7 @@ if(isset($_SESSION['uid'])){
         <div class="w3-row">
           <div class="w3-col m6">
             <div class="w3-container">
-              <img src="http://localhost/housing/assets/ads/ad10.gif" alt="Your Own home" width="110px" height="330px">
+              <img src="http://localhost/mhousing/assets/ads/ad10.gif" alt="Your Own home" width="110px" height="330px">
               <!-- <p>Upcoming Events:</p>
               <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
               <p><strong>Holiday</strong></p>
@@ -220,7 +220,7 @@ if(isset($_SESSION['uid'])){
           </div>
           <div class="w3-col m6">
             <div class="w3-container">
-              <img src="http://localhost/housing/assets/ads/ad4.gif" alt="Your Own home" width="120px" height="330px">
+              <img src="http://localhost/mhousing/assets/ads/ad4.gif" alt="Your Own home" width="120px" height="330px">
               <!-- <p>Upcoming Events:</p>
               <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
               <p><strong>Holiday</strong></p>
@@ -267,27 +267,7 @@ if(isset($_SESSION['uid'])){
 </div>
 
 <script>
- $(document).ready(function(){
-  $('.btn_cart').click(function(){
-    var id = $(this).attr('id');
-    var prd_img = $(this).attr('img');
-   
-    $.ajax({
-                url: "http://localhost/front-site/cart.php",
-                method: "POST",
-                data: {id:id,prd_img:prd_img},
-                success: function(data)
-                {
-                
-                $('#result').html(data);
-                // Display the Bootstrap modal
-                $('#Modal').modal('show');
-                }
-        });
-  });
-   
- });
-
+ 
  $(document).ready(function(){
  
  var limit = 7;
