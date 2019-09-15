@@ -23,21 +23,27 @@ if(isset($_REQUEST['action'])){
 ?>
 <!-- Header -->
 <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot Detail</b></h1>
-</div>
+    <h1 class="w3-jumbo"><b>Property</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
 <div class="container mt-3">
-  
+  <h2>Custom Search</h2>
+  <p>Type something in the input field</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
   <table class="table table-bordered table-responsive" id="Table">
     <thead>
       <tr>
-        <th>PlotNo#</th>
-        <th>Title</th>
-       
+        <th>Image</th>
+        <th>Property Title</th>
+        <th>Unit</th>
         <th>Desc</th>
-        
-        <th>Block</th>
-        
-       
+        <th>PlotNo#</th>
+        <th>City</th>
+        <th>Location</th>
+        <th>Purpose</th>
+        <th>Type</th>
         <th>Price</th>
         <th>Action</th>
         
@@ -55,13 +61,15 @@ if ($result->num_rows > 0):
 ?>
    
       <tr>
-        <td><?=$row['plot_no']?></td>
+        <td><img src="../assets/dataimg/<?=$row['image']?>" width="100px" height="100px" /></td>
         <td><?=$row['property_title']?></td>
-        
+        <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
         <td><?=$row['property_desc']?></td>
-        
+        <td><?=$row['plot_no']?></td>
         <td><?=$row['property_city']?></td>
-        
+        <td><?=$row['purpose']?></td>
+        <td><?=$row['property_location']?></td>
+         <td><?=$row['property_type']?></td>
          <td><?=$row['price']?></td>
         
         <td><div class = "dropdown">
@@ -73,10 +81,13 @@ if ($result->num_rows > 0):
    
                 <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
                    <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Plot</a>
+                      <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
                    </li>
-                    <li role = "presentation" class = "divider"></li>
-                    <li role = "presentation" class = "divider"></li>
+                   <li role = "presentation" class = "divider"></li>
+                  
+                   
+                   
+                   <li role = "presentation" class = "divider"></li>
                    <li role = "presentation">
                       <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
                          Delete
@@ -233,5 +244,5 @@ function(isConfirm) {
 
 });
 </script>
-<?php include "vendor_footer.php";?>
+
   

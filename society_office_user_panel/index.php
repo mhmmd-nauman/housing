@@ -10,5 +10,5 @@ include "vendor_header.php";
    } else {
        echo"Error.";
    }
-include "vendor_footer.php";
+   
 ?>

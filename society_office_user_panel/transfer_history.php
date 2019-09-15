@@ -29,11 +29,15 @@ if(isset($_REQUEST['action'])){
 ?>
 <!-- Header -->
 <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot Transfer History</b></h1>
-    
+    <h1 class="w3-jumbo"><b>Plot Transfer</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>History</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 <div class="container mt-3">
-  
+  <h2>Custom Search</h2>
+  <p>Type something in the input field</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
   <table class="table table-bordered" id="Table">
     <thead>
       <tr>

@@ -30,16 +30,13 @@ $d=$_SESSION['uid'];
    
 ?>
 <!-- Header -->
-<div class="w3-container" style="margin-top:80px" id="showcase">
+<div class="w3-container" style="margin-top:10px" id="showcase">
     <h1 class="w3-jumbo"><b>Society Officer </b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
-<div class="container mt-3">
-  <h2>Custom Search</h2>
-  <p>Type something in the input field</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
+<div class="container mt-3" style="border-top:1px solid; border-style:inset; padding-top: 50px;">
+
   <table class="table table-bordered" id="Table">
     <thead>
       <tr>
@@ -113,7 +110,7 @@ if ($result->num_rows > 0):
     </tbody>
   </table>
   
-  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+
 </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
  
