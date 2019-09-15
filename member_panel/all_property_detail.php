@@ -4,6 +4,7 @@ require_once "../db.php";
 
  $d=$_SESSION['uid'];
  $login_id =  $d['login_id'];
+ $user_name =  $d['name'];
 if(isset($_REQUEST['action'])){
     switch($_REQUEST['action']){
         case"block":
@@ -49,7 +50,7 @@ if(isset($_REQUEST['action'])){
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * from property_detail";
+$sql = "SELECT * from property_detail where `status` = 'active'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
@@ -68,7 +69,7 @@ if ($result->num_rows > 0):
          <td>PKR <?=$row['price']?></td>
         
         <td>
-        <a type="button" id="request" plot_no="<?=$row['plot_no']?>" login_id="<?=$login_id?>" class="btn request w3-red btn-default">Buy Request</a>
+        <a type="button" id="request" name="<?=$user_name?>" plot_no="<?=$row['plot_no']?>" login_id="<?=$login_id?>" class="btn request w3-red btn-default">Buy Request</a>
         </td>
         
 
@@ -98,6 +99,7 @@ $(document).ready(function(){
       $(document).on('click', '.request', function(){
         var plot_no = $(this).attr("plot_no");
         var login_id = $(this).attr("login_id");
+        var user_name = $(this).attr("name");
         swal({
   title: "PlotNo# "+plot_no,
   text: "Are you sure send this plot buying request?",
@@ -114,7 +116,7 @@ function(isConfirm){
     $.ajax({
                 url: "../plot_req.php",
                 type: "POST",
-                data: {plot_no:plot_no,login_id:login_id},
+                data: {plot_no:plot_no,login_id:login_id,user_name:user_name},
                 dataType: "html",
                 success: function (data) {
                     swal("Done!",data,"success");

@@ -33,55 +33,54 @@ if(isset($_REQUEST['action'])){
       <tr>
       <th>PlotNo#</th>
       <th>Unit</th>
-        <th>Desc</th>
-        <th>Location</th>
-        <th>Type</th>
-        <th>Price</th>
-        <th>Action</th>
+      <th>Location</th>
+      <th>Price</th>
+      <th>Status</th>
+     
         </tr>
     </thead>
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * from property_detail where `login_id` = '$login_id'";
+$sql = 
+
+" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,
+property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.user_cnic,plot_request.status ,plot_request.transfer_to
+FROM property_detail
+INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no 
+WHERE plot_request.login_id = '$login_id' 
+AND plot_request.status='pending' 
+AND property_detail.status='active'
+
+";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
     // output data of each row
-     
+    
 ?>
    
       <tr>
     <td><?=$row['plot_no']?></td>
     <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
-    <td rowspan="2"><?=$row['property_desc']?></td>
+  
     <td><?=$row['property_location']?></td>
-         <td><?=$row['property_type']?></td>
+         
          <td><?=$row['price']?></td>
-      <td><div class = "dropdown">
-   
-                <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-                   Action
-                   <span class = "caret"></span>
-                </button>
-   
-                <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
-                   </li>
-                   <li role = "presentation" class = "divider"></li>
-                  
-                   
-                   
-                   <li role = "presentation" class = "divider"></li>
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
-                         Delete
-                      </a>
-                   </li> 
-                </ul>
-   
-            </div></td>
+         <td>
+         <?php 
+         if($row['transfer_to']==''){
+           echo "<b class='w3-orange'>Under Review</b>";
+         }elseif($row['transfer_to']==$login_id){
+          echo "<b class='w3-green'>Congrats! Meet Society Officer</b>";
+         }
+         else{
+          echo "<b class='w3-red'>Sorry! you`re not get this.</b>";
+         }
+         
+         ?>
+         </td>
+      
         
 
       </tr>
@@ -108,121 +107,6 @@ $(document).ready(function(){
 			});
   
 });
-</script>
-
- <!-- The Modal -->
- <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Transfer Property</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="col">
-
-              <form id="form_data" action="transfer_process.php" method="POST">
-              <div class="row">
-              <input type="hidden" value="<?=$login_id?>" name="id" id="id">
-              <div class="col-sm-4">
-              <div class="w3-panel w3-blue w3-card-4"> Transfer Plot no#</div>
-              <input type="text" name="plotno" autocomplete="off" class="w3-input w3-animate-input w3-text-red"  id="plotno"  placeholder="Your Plot No#" style="width:70%">
-              </div>
-              <div class="col-sm-4">
-              <br>
-              <br>
-              <a class=" w3-circle fa-2x w3-orange"><span class="fa fa-exchange"></span></a>
-              </div>
-              <div class="col-sm-4">
-              <div class="w3-panel w3-green w3-card-4"> Transfer to</div>
-             
-                <select class="form-control" id="reciver_id" name="reciver_id">
-                <?php                    
-    
-    $sql = "SELECT * FROM `login` where `status` ='Active'";
-    $result = $conn->query($sql);
-    while($row = $result->fetch_assoc())
-    {
-        ?><option value="<?php echo $row['login_id']; ?>">  <?php echo $row['name'];?> / <?php echo $row['type'];?></option> 
-    <?php }?>
-                </select>
-              </div>
-              </div>
-
-              <div class="row">
-              <div class="col-sm-4">
-              <div class="w3-panel w3-orange w3-card-4"> Confirm your Password</div>
-              <input class="w3-input w3-animate-input w3-text-red" type = "password" id="password" name="password" placeholder="*******" style="width:70%">
-              </div>
-              </div>
-              <br>
-              <button type="submit" name="submit" id="submit" class="w3-btn w3-orange">Process....</button>
-              </form>
-              </div>
-          </div>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-    <script>
-//        $(document).on('submit','#form_data',function(event){
-//     event.preventDefault();
-  
-//    var form_data = $(this).serialize();
-// 	var id=$('#id').val();
-
-//   var plot_no = $('#plotno').val();
-//   var reciver_id = $('#reciver_id').val();
-//    var password = $('#password').val();
-//     swal({
-//   title: "Are you sure to transfer your Propert",
-//   text: "You will not be able to recover this imaginary file!",
-//   type: "warning",
-//   showCancelButton: true,
-//   confirmButtonClass: "btn-danger",
-//   confirmButtonText: "Yes, transfer it",
-//   cancelButtonText: "No, cancel plx!",
-//   closeOnConfirm: false,
-//   closeOnCancel: false,
-//   showLoaderOnConfirm: true
-// },
-// function(isConfirm) {
-//   if (isConfirm) {
-//     setTimeout(function () {
-//       $.ajax({
-//             url: "transfer_process.php",
-//             method:"POST",
-//             data:{plot_no:plot_no,reciver_id:reciver_id,password:password,reciver_id:reciver_id,id:id},
-//             success:function(data)
-//             {
-             
-//               swal(data, "Your imaginary file has been deleted.", "success");
-//               $('#form_data')[0].reset();
-//                         $('#myModal').modal('hide');
-//                         location.reload();
-               
-//             }
-//             })
-    
-//   }, 2000);
-  
-    
-//   } else {
-//     swal("Cancelled", "Your imaginary file is safe :)", "error");
-//   }
-// });
-   
-
-// });
 </script>
 
   
