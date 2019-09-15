@@ -49,8 +49,7 @@ property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.u
 FROM property_detail
 INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no 
 WHERE plot_request.login_id = '$login_id' 
-AND plot_request.status='pending' 
-AND property_detail.status='active'
+
 
 ";
 $result = $conn->query($sql);

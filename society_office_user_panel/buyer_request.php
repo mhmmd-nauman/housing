@@ -33,6 +33,8 @@ if(isset($_REQUEST['action'])){
       <tr>
       <th>PlotNo#</th>
       <th>Unit</th>
+      <th>CNIC#</th>
+      <th>Buyer Name</th>
       <th>Location</th>
       <th>Price</th>
       <th>Action</th>
@@ -44,12 +46,10 @@ if(isset($_REQUEST['action'])){
     <?php
 $sql = 
 
-" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,plot_request.id,
-property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.user_cnic,plot_request.status ,plot_request.transfer_to
+" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,plot_request.id,plot_request.login_id,
+property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.user_cnic,plot_request.status ,plot_request.transfer_to,property_detail.status as property_status
 FROM property_detail
 INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no
-AND plot_request.status='pending' 
-AND property_detail.status='active'
 
 ";
 $result = $conn->query($sql);
@@ -62,16 +62,30 @@ if ($result->num_rows > 0):
       <tr>
     <td><?=$row['plot_no']?></td>
     <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
-  
+  <td><?=$row['user_cnic']?></td>
+  <td><?=$row['user_name']?></td>
     <td><?=$row['property_location']?></td>
          
          <td><?=$row['price']?></td>
          <td>
-            <div class="btn-group-vertical">
-                    <button type="button" id="<?= $row['id'];?>" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Transfer</button>
+          <?php
+          if($row['property_status']=='active' && $row['status']=='pending'){
+            ?>
+<div class="btn-group-vertical">
+                    <button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn btn-primary transfer" >Transfer</button>
                     <button type="button" id="<?= $row['id'];?>" class="btn w3-red w3-opacity delete">Delete</button>
                 
             </div>
+
+            <?php
+          }else
+          {
+            ?>
+<button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>
+            <?php
+          }
+          ?>
+            
          </td>
       
         
@@ -86,38 +100,7 @@ if ($result->num_rows > 0):
  
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
-<!-- The Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" id="student_form">
-                <div class="modal-header">
-                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                   <h4 class="modal-title">Add Data</h4>
-                </div>
-                <div class="modal-body">
-                   
-                    <span id="form_output"></span>
-                    <div class="form-group">
-                        <label>Enter First Name</label>
-                        <input type="text" name="first_name" id="first_name" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Last Name</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control" />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                     <input type="hidden" name="student_id" id="student_id" value="" />
-                    <input type="hidden" name="button_action" id="button_action" value="insert" />
-                    <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-  
+
 
 <script>
     function confirmAction(){
@@ -132,7 +115,7 @@ $(document).ready(function(){
 				"columnDefs":[],
 			});
 
-            $(document).on('click', '.transfer', function(){
+            $(document).on('click', '.delete', function(){
         var id = $(this).attr("id");
         $('#myModal').modal('show');
         $.ajax({
@@ -142,18 +125,56 @@ $(document).ready(function(){
             dataType:'json',
             success:function(data)
             {
-                console.log(data);
-                // $('#first_name').val(data.first_name);
-                // $('#last_name').val(data.last_name);
-                // $('#student_id').val(id);
-                // $('#studentModal').modal('show');
-                // $('#action').val('Edit');
-                // $('.modal-title').text('Edit Data');
-                // $('#button_action').val('update');
+               
+                $('#first_name').val(data.first_name);
+                $('#last_name').val(data.last_name);
+                $('#student_id').val(id);
+                $('#studentModal').modal('show');
+                $('#action').val('Edit');
+                $('.modal-title').text('Edit Data');
+                $('#button_action').val('update');
             }
         })
       
     });
+
+
+
+             $(document).on('click', '.transfer', function(){
+        var plot_no = $(this).attr("plot_no");
+        var plot_id = $(this).attr("id");
+        var login_id = $(this).attr("login_id");
+        var user_id = $(this).attr("user_id");
+         var user_cnic = $(this).attr("user_cnic");
+        swal({
+  title: "You Sure transfer PlotNo# "+plot_no+" to CNIC:"+ user_cnic,
+  text: "Are you sure transfer this plot?",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Send Request",
+  cancelButtonText: "No, cancel please!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm){
+  if (isConfirm) {
+    $.ajax({
+                url: "./buyer_request_process.php",
+                type: "POST",
+                data: {plot_no:plot_no,login_id:login_id,user_id:user_id,plot_id:plot_id},
+                dataType: "html",
+                success: function (data) {
+                    swal("Done!",data,"success");
+                }
+            });
+        // submitting the form when user press yes
+  } else {
+    swal("Cancelled", "Your request not proceed:)", "error");
+  }
+});
+      
+      });
   
 });
 </script>
