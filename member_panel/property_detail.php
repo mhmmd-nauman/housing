@@ -28,12 +28,12 @@ if(isset($_REQUEST['action'])){
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 <div class="container mt-3" style="border-top:1px solid; border-style:inset; padding-top: 50px;">
-  <table class="table table-bordered table-responsive" id="Table">
+  <table class="w3-table-all w3-hoverable" id="Table">
     <thead>
       <tr>
       <th>PlotNo#</th>
       <th>Unit</th>
-        <th colspan="2">Desc</th>
+        <th>Desc</th>
         <th>Location</th>
         <th>Type</th>
         <th>Price</th>
