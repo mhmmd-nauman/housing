@@ -68,7 +68,7 @@ if ($result->num_rows > 0):
          <td><?=$row['price']?></td>
          <td>
             <div class="btn-group-vertical">
-                    <button type="button" id="<?= $row['id'];?>" class="btn btn-primary transfer">Transfer</button>
+                    <button type="button" id="<?= $row['id'];?>" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Transfer</button>
                     <button type="button" id="<?= $row['id'];?>" class="btn w3-red w3-opacity delete">Delete</button>
                 
             </div>
@@ -86,6 +86,39 @@ if ($result->num_rows > 0):
  
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
+<!-- The Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" id="student_form">
+                <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   <h4 class="modal-title">Add Data</h4>
+                </div>
+                <div class="modal-body">
+                   
+                    <span id="form_output"></span>
+                    <div class="form-group">
+                        <label>Enter First Name</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Last Name</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                     <input type="hidden" name="student_id" id="student_id" value="" />
+                    <input type="hidden" name="button_action" id="button_action" value="insert" />
+                    <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  
+
 <script>
     function confirmAction(){
         if(confirm("Are you sure to complete the action?")){
@@ -101,20 +134,22 @@ $(document).ready(function(){
 
             $(document).on('click', '.transfer', function(){
         var id = $(this).attr("id");
+        $('#myModal').modal('show');
         $.ajax({
-            url:"{{route('ajaxdata.fetchdata')}}",
+            url:"./buyer_request_process.php",
             method:'get',
             data:{id:id},
             dataType:'json',
             success:function(data)
             {
-                $('#first_name').val(data.first_name);
-                $('#last_name').val(data.last_name);
-                $('#student_id').val(id);
-                $('#studentModal').modal('show');
-                $('#action').val('Edit');
-                $('.modal-title').text('Edit Data');
-                $('#button_action').val('update');
+                console.log(data);
+                // $('#first_name').val(data.first_name);
+                // $('#last_name').val(data.last_name);
+                // $('#student_id').val(id);
+                // $('#studentModal').modal('show');
+                // $('#action').val('Edit');
+                // $('.modal-title').text('Edit Data');
+                // $('#button_action').val('update');
             }
         })
       
