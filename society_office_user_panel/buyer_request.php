@@ -73,17 +73,22 @@ if ($result->num_rows > 0):
             ?>
 <div class="btn-group-vertical">
                     <button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn btn-primary transfer" >Transfer</button>
-                    <button type="button" id="<?= $row['id'];?>" class="btn w3-red w3-opacity delete">Delete</button>
+
                 
             </div>
 
             <?php
-          }else
-          {
-            ?>
-<button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>
-            <?php
           }
+          elseif($row['property_status']=='deactive' && $row['status']=='success')
+                    {
+                        echo '<button type="button" id="" class="btn w3-red w3-opacity delete">Alot to others</button>';
+                    }
+          else
+                {
+                    ?>
+        <button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>
+                    <?php
+                }
           ?>
             
          </td>

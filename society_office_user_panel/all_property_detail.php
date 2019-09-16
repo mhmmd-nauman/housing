@@ -45,7 +45,7 @@ if(isset($_REQUEST['action'])){
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * from property_detail";
+$sql = "SELECT * from property_detail where `status` == 'active'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
