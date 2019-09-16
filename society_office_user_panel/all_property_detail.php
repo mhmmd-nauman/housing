@@ -21,6 +21,7 @@ if(isset($_REQUEST['action'])){
         
    
 ?>
+
 <!-- Header -->
 <div class="w3-container" style="margin-top:1px" id="showcase">
     <h1 class="w3-jumbo"><b>Property</b></h1>
@@ -45,7 +46,7 @@ if(isset($_REQUEST['action'])){
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * from property_detail where `status` == 'active'";
+$sql = "SELECT * from property_detail";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
@@ -64,30 +65,47 @@ if ($result->num_rows > 0):
      
          <td><?=$row['price']?></td>
         
-        <td><div class = "dropdown">
+         <td>
+        <?php
+
+        if($row['status']=='active')
+        {
+            ?>
+            <div class = "dropdown">
    
-                <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-                   Action
-                   <span class = "caret"></span>
-                </button>
-   
-                <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
-                   </li>
-                   <li role = "presentation" class = "divider"></li>
-                  
-                   
-                   
-                   <li role = "presentation" class = "divider"></li>
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
-                         Delete
-                      </a>
-                   </li> 
-                </ul>
-   
-            </div></td>
+   <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
+      Action
+      <span class = "caret"></span>
+   </button>
+
+   <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
+      <li role = "presentation">
+         <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
+      </li>
+      <li role = "presentation" class = "divider"></li>
+     
+      
+      
+      <li role = "presentation" class = "divider"></li>
+      <li role = "presentation">
+         <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
+            Delete
+         </a>
+      </li> 
+   </ul>
+
+</div>
+            <?php
+        }
+        else
+        {
+          echo '<a href="#" data-toggle="popover" class="btn w3-black" 
+          title="Buyer CNIC #'.$row['buyer_cnic'].'" data-content="Sold Date: '.$row['sold_date'].'"><b class="w3-text-red fa fa-check">  SOLD</b></a>';
+        
+        }
+        ?>
+
+        </td>
         
 
       </tr>
@@ -112,6 +130,8 @@ $(document).ready(function(){
     var orderdataTable = $('#Table').DataTable({
 				"columnDefs":[],
 			});
+
+      $('[data-toggle="popover"]').popover();   
 
 });
 </script>

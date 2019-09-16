@@ -33,8 +33,8 @@ echo $login_id = $d['login_id'];
   <?php endwhile; endif?>
 </div>
 <!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+<div class="modal w3-animate-zoom" id="myModal">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       
       <!-- Modal Header -->
@@ -50,93 +50,14 @@ echo $login_id = $d['login_id'];
         </div>
         <br>
         <br>
-        <form action="<?=$base_url?>property_submit.php" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class="was-validated">
-          <div class="col w3-padding-32">
+        <form action="../property_submit.php" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class="was-validated">
+          <div class="col">
             <input type="hidden" name="login_id" value="<?= $login_id;?>">
           
-            <!-- First row -->
-            <div class="row">
-              <!-- Propert Detail -->
-              <!-- Purpose -->
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label><h3>Purpose</h3></label>
-                  <div class="w3-tag  w3-green" >
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="purpose" required value="sale">
-                      <label>Sale</label>
-                    </div>
-                  </div>
-                  <div class="w3-tag w3-round w3-green">
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="purpose" value="rent">
-                      <label>Rent</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- plot type -->
-              <div class="col-sm-8">
-                <div class="form-group">
-                  <label><h3>Property Type</h3></label>
-                  <div class="w3-tag  w3-green" >
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="property_type" value="home" required>
-                      <label>Home</label>
-                    </div>
-                  </div>
-                  <div class="w3-tag w3-round w3-green">
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="property_type" value="commercial" required>
-                      <label>commercial</label>
-                    </div>
-                  </div>
-                  <div class="w3-tag  w3-green" >
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="property_type" value="plot" required>
-                      <label>Plot</label>
-                    </div>
-                  </div>
-                  <div class="w3-tag  w3-green" >
-                    <div class="w3-tag w3-green w3-border w3-border-white">
-                      <input class="w3-radio" type="radio" name="property_type" value="land" required>
-                      <label>Land</label> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- Second Row -->
             <!-- Property Detail -->
             <div class="row">
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label for="city">City:</label>
-                  <input type="text" class="form-control" id="property_city" placeholder="City" name="property_city" required>
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please Enter Your City.</div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label for="location">Location:</label>
-                  <input type="text" class="form-control" id="location" placeholder="1A, Avenue 3rd, xyz Road" name="property_location" required>
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Your Area. XYZ road, near xyz.</div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="w3-panel bg-info w3-card-4">
- Propert Detail
-</div>
-            <br>
-            
-            <div class="row">
-              <!-- property title -->
-              
-              <!-- First col -->
-              <div class="col-sm-4">
+            <div class="col-sm-4">
                 <div class="form-group">
                   <label for="property_title">Property Title:</label>
                   <input type="text" class="form-control" id="property_title" placeholder="Propert Title" name="property_title" required>
@@ -152,10 +73,14 @@ echo $login_id = $d['login_id'];
                 </div>
                 
               </div>
-              
-              
-              <!-- second col -->
               <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="location">Location:</label>
+                  <input type="text" class="form-control" id="location" placeholder="1A, Avenue 3rd, xyz Road" name="property_location" required>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Your Area. XYZ road, near xyz.</div>
+                </div>
+
                 <div class="form-group">
                 <label for="property_desc">Land Area :</label>
                 <div class="input-group mt-3 mb-3">
@@ -173,15 +98,8 @@ echo $login_id = $d['login_id'];
                   <input type="number" class="form-control" placeholder="2 marla ,2 kanal" name="unit_qty" id="unit_qty" required>
                 </div>
                 </div>
-                <div class="form-group">
-                  <label for="image">Image of Your properety</label>
-                  <div class="custom-file">
-        <input type="file" class="custom-file-input w3-padding-16 w3-border" required="true" name="prd_image" id="customFile">
-        <label require class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-                </div>
-                
               </div>
+
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="property_title">All Inclusinve price (pkr):</label>
@@ -199,13 +117,9 @@ echo $login_id = $d['login_id'];
               </div>
               
             </div>
-
-            <div class="row">
-             
-            </div>
-
-          </div>
-          <button type="submit" name="submit" class="w3-button w3-center w3-green"> <div class="spinner-grow text-danger"></div> Submit Property</button>
+            <br>
+           </div>
+          <button type="submit" name="submit" class="w3-button w3-block w3-center w3-green"> <div class="spinner-grow text-danger"></div> <b> Submit Property</b></button>
         </form>
       </div>
       

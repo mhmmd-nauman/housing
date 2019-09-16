@@ -47,111 +47,8 @@ require_once "base_url.php";
   }
   </style>
   <body>
-    <!-- <div class = "container">
-      <div class="row">
-        <h1>Online Boutiqe Front Site </h1>
-      </div>
-      <div class="row">
-        &nbsp;
-      </div>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="#">Online Boutiqe</a>
-              </div>
-              <ul class="nav navbar-nav">
-                    <li ><a href="index.php">Home</a></li>
-                    
-              </ul>
-                
-            </div> -->
-            <!-- <div class="col-md-4">
-              <?php //if(isset( $_SESSION['customer'])){?>
-              <a href ="myaccount.php">Welcome( <?php //echo  $_SESSION['customer']['customer_name'];?>)</a>&nbsp;|&nbsp;<a href ="logout.php">Logout</a>
-              <?php //} else {?>
-              <a href ="register.php">register</a>&nbsp;|&nbsp;<a href ="login.php">login</a>
-              <?php// } ?>
-            </div>
-          </div>
-        </div>
-      </nav> -->
-      <!-- Sidebar/menu -->
    
-        <!-- Top menu on small screens -->
-        <!-- Header -->
-        <!-- <header class="w3-container w3-center w3-padding-48 w3-white">
-          
-          <img src="<?=$base_url?>assets/img/boutique.png" alt="boutique" width="10%"> <h1 class="w3-xxxlarge"><b>Housing Society Management System</b></h1>
-          <h6>Welcome Online <span class="w3-tag">Housing Society Management System</span></h6>
-          <div class="w3-bar w3-border">
-            <a href="<?=$base_url?>index.php" class="w3-bar-item w3-button">Home</a>
-            <?php
-            
-            //       if(isset($_SESSION['uid'])){
-            //         $d=$_SESSION['uid'];
-            //         echo '
-            //         <a href="<?=$base_url?>signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
-                   
-            //         ';
-            //         if($d["type"]=="user")
-            //               {
-            //                 echo '<a href="<?=$base_url?>user_panel/index.php" class="w3-bar-item w3-button"><img src="<?=$base_url?>assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
-            //               }
-            //               else
-            //               {
-            //                 echo '<a href="<?=$base_url?>vendor_panel/index.php" class="w3-bar-item w3-button"><img src="<?=$base_url?>assets/dataimg/'.$d["image"].'"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
-            //               }
-            //       }else{
-            //         echo '
-            //         <a href="<?=$base_url?>login.php" class="w3-bar-item w3-button w3-light-grey">Login</a>
-            // <a href="<?=$base_url?>register.php" class="w3-bar-item w3-button">Register</a>
-            //         ';
-            //       }
-              ?>
-            
-            
-          </div>
-        </header> -->
-        <!-- Navbar -->
-<!-- <div class="w3-top">
- <div class="w3-bar w3-theme-l3 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="<?=$base_url?>index.php" class="w3-bar-item w3-button w3-padding-large w3-theme-l4"> <i><img src="<?=$base_url?>assets/img/logo.png" height="40px" style="margin-left: 40px;" alt="Housing Society"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
-  <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="#" class="w3-bar-item w3-button">One new friend request</a>
-      <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-      <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
-    </div>
-  </div>
-  <a href="<?=$base_url?>login.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-    <i class="fa fa-user-circle" aria-hidden="true"></i>
-     Account
-  </a>
- </div>
-</div> -->
-
-<!-- Navbar on small screens -->
-<!-- <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-</div>
-<header class="w3-container w3-center w3-padding-64 w3-white">
-          
-          <img src="<?=$base_url?>assets/img/logo.png" alt="Housing" width="10%"> <h1 class="w3-xxxlarge"><b>Housing System</b></h1>
-        
-        
-  </header> -->
-  
-        <!-- Top menu on small screens -->
+   <!-- Top menu on small screens -->
         <!-- Header -->
         <header class="w3-container w3-center w3-padding-48 w3-white">
           
@@ -181,7 +78,7 @@ require_once "base_url.php";
                           }
                            else
                           {
-                            echo '<a href="'.$base_url.society_office_user_panel.'/'.index.'.'.php.'" class="w3-bar-item w3-button"><img src="<?=$base_url?>assets/ads/admin.png"class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
+                            echo '<a href="'.$base_url.society_office_user_panel.'/'.index.'.'.php.'" class="w3-bar-item w3-button"><img src="'.$base_url.assets.'/'.ads.'/'.admin.'.'.png.'" class="rounded-circle" alt="Cinque Terre" width="30px" height="30px"> Profile</a>';
                              echo '<a href="'.$base_url.society_office_user_panel.'/'.addproperty.'.'.php.'" class="w3-bar-item w3-button w3-green"><i class="fa fa-plus"></i> Add Property</a>';
                           }
                   }else{

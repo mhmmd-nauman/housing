@@ -28,9 +28,10 @@ if(isset($_REQUEST['action'])){
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 <div class="container mt-3" style="border-top:1px solid; border-style:inset; padding-top: 50px;">
-  <table class="w3-table-all w3-hoverable" id="Table">
+  <table class="w3-table-all w3-hoverable" id="Table" data-order='[[ 0, "desc" ]]' data-page-length='25'>
     <thead>
       <tr>
+      <th style="display: none;">ID</th>
       <th>PlotNo#</th>
       <th>Unit</th>
       <th>CNIC#</th>
@@ -46,10 +47,11 @@ if(isset($_REQUEST['action'])){
     <?php
 $sql = 
 
-" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,plot_request.id,plot_request.login_id,
-property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.user_cnic,plot_request.status ,plot_request.transfer_to,property_detail.status as property_status
+" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,
+plot_request.id,plot_request.login_id, property_detail.price,plot_request.user_name,plot_request.plot_no,
+plot_request.user_cnic,plot_request.status ,plot_request.transfer_to,plot_request.id,property_detail.status as property_status
 FROM property_detail
-INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no
+INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no ORDER BY plot_request.id DESC
 
 ";
 $result = $conn->query($sql);
@@ -60,6 +62,7 @@ if ($result->num_rows > 0):
 ?>
    
       <tr>
+      <td style="display: none;"><?=$row['id']?></td>
     <td><?=$row['plot_no']?></td>
     <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
   <td><?=$row['user_cnic']?></td>
@@ -81,13 +84,12 @@ if ($result->num_rows > 0):
           }
           elseif($row['property_status']=='deactive' && $row['status']=='success')
                     {
-                        echo '<button type="button" id="" class="btn w3-red w3-opacity delete">Alot to others</button>';
+                      echo ' <button type="button"  class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>';  
                     }
           else
                 {
-                    ?>
-        <button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>
-                    <?php
+       
+        echo '<button type="button"  class="btn w3-red w3-opacity delete">Alot to others</button>';
                 }
           ?>
             
@@ -167,10 +169,11 @@ function(isConfirm){
     $.ajax({
                 url: "./buyer_request_process.php",
                 type: "POST",
-                data: {plot_no:plot_no,login_id:login_id,user_id:user_id,plot_id:plot_id},
+                data: {plot_no:plot_no,login_id:login_id,user_id:user_id,plot_id:plot_id,user_cnic:user_cnic},
                 dataType: "html",
                 success: function (data) {
                     swal("Done!",data,"success");
+                    $('#Table').DataTable().ajax.reload();
                 }
             });
         // submitting the form when user press yes

@@ -61,30 +61,45 @@ if ($result->num_rows > 0):
         <td><?=$row['property_location']?></td>
          <td><?=$row['price']?></td>
         
-        <td><div class = "dropdown">
+        <td>
+        <?php
+
+        if($row['status']=='active')
+        {
+            ?>
+            <div class = "dropdown">
    
-                <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-                   Action
-                   <span class = "caret"></span>
-                </button>
-   
-                <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
-                   </li>
-                   <li role = "presentation" class = "divider"></li>
-                  
-                   
-                   
-                   <li role = "presentation" class = "divider"></li>
-                   <li role = "presentation">
-                      <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
-                         Delete
-                      </a>
-                   </li> 
-                </ul>
-   
-            </div></td>
+   <button type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
+      Action
+      <span class = "caret"></span>
+   </button>
+
+   <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
+      <li role = "presentation">
+         <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
+      </li>
+      <li role = "presentation" class = "divider"></li>
+     
+      
+      
+      <li role = "presentation" class = "divider"></li>
+      <li role = "presentation">
+         <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
+            Delete
+         </a>
+      </li> 
+   </ul>
+
+</div>
+            <?php
+        }
+        else
+        {
+          echo '<b class="w3-text-red fa fa-check">  SOLD</b>';
+        }
+        ?>
+
+        </td>
         
 
       </tr>

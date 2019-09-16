@@ -2,6 +2,7 @@
 require_once "db.php";
 include "header/header.php";
 require_once "base_url.php";
+
 if(isset($_SESSION['uid'])){
     $d=$_SESSION['uid'];
 
