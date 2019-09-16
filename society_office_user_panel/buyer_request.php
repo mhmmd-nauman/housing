@@ -48,7 +48,7 @@ if(isset($_REQUEST['action'])){
 $sql = 
 
 " SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,
-plot_request.id,plot_request.login_id, property_detail.price,plot_request.user_name,plot_request.plot_no,
+plot_request.id,plot_request.login_id, property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.process_transfer_id,
 plot_request.user_cnic,plot_request.status ,plot_request.transfer_to,plot_request.id,property_detail.status as property_status
 FROM property_detail
 INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no ORDER BY plot_request.id DESC
@@ -84,7 +84,7 @@ if ($result->num_rows > 0):
           }
           elseif($row['property_status']=='deactive' && $row['status']=='success')
                     {
-                      echo ' <button type="button"  class="btn w3-green transfer" ><i class="fa w3-text-orange fa-print"></i> Print reciept</button>';  
+                      echo ' <a type="button" target="_blank" href="print_reciept.php?id='.$row['id'].'" class="btn w3-green" ><i class="fa w3-text-orange fa-print"></i> Print</a>';  
                     }
           else
                 {
