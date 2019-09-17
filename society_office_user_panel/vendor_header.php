@@ -47,7 +47,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">
+  <i class="fa fa-bars"></i>  Menu</button>
    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
 </div>
 
@@ -62,9 +63,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
       <br>
       
-      <a href="<?=$base_url?>../index.php" class="w3-bar-item w3-text-red w3-button"><i class="fa fa-home"></i> Home</a>
+      <a href="<?=$base_url?>../index.php" class="w3-bar-item w3-text-red w3-button">
+      <i class="fa fa-home"></i> Home</a>
       
-      <a href="<?=$base_url?>../signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
+      <a href="<?=$base_url?>../signout.php" class="w3-bar-item w3-button">
+      <i class="fa fa-sign-out"></i> signout</a>
     </div>
   </div>
   <hr>
@@ -72,18 +75,29 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu">
+    <i class="fa fa-remove fa-fw"></i>  Close Menu</a>
 
-    <a href="./buyer_request.php" class="w3-bar-item w3-button w3-padding"><button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-commenting-o fa-2x"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button> Buyers Request</a>
-    <a href="member_detail.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-users fa-fw"></i>Member Detail</a>
+    <a href="./buyer_request.php" class="w3-bar-item w3-button w3-padding">
+    <button class="w3-button w3-padding-large" title="Notifications">
+    <i class="fa fa-commenting-o fa-2x"></i>
+    <span class="w3-badge w3-right w3-small w3-green">New</span>
+    </button> Buyers Request</a>
+    <a href="member_detail.php" class="w3-bar-item w3-button w3-padding">
+    <i class="w3-text-yellow fa fa-users fa-fw"></i>
+    Member Detail</a>
 
     
 
     
-    <a href="./sofficer_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i> Plots</a>
-    <a href="./all_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-meetup w3-text-orange fa-fw"></i> All Plots</a>
-        <a href="./addproperty.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green fa-fw"></i>Add Plots</a>
-         <a href="./transfer_history.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Plot History</a>
+    <a href="./sofficer_property_detail.php" class="w3-bar-item w3-button w3-padding">
+    <i class="fa fa-home w3-text-green fa-fw"></i> Plots</a>
+    <a href="./all_property_detail.php" class="w3-bar-item w3-button w3-padding">
+    <i class="fa fa-meetup w3-text-orange fa-fw"></i> All Plots</a>
+        <a href="./addproperty.php" class="w3-bar-item w3-button w3-padding">
+        <i class="fa fa-plus w3-text-green fa-fw"></i>Add Plots</a>
+         <a href="./transfer_history.php" class="w3-bar-item w3-button w3-padding">
+         <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Plot History</a>
   </div>
 </nav>
 
