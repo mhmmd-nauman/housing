@@ -28,54 +28,62 @@ if(isset($_REQUEST['action'])){
    
 ?>
 <!-- Header -->
-<div class="w3-container" style="margin-top:80px" id="showcase">
+<div class="w3-container" style="margin-top:10px" id="showcase">
     <h1 class="w3-jumbo"><b>Plot Transfer</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>History</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 <div class="container mt-3">
-  <h2>Custom Search</h2>
-  <p>Type something in the input field</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
   <table class="table table-bordered" id="Table">
     <thead>
       <tr>
-        <th> Id</th>
-        <th>Sender CNIC</th>
-        <th>Reciver CNIC</th>
+        <th>No#</th>
+        <th>Officer Name</th>
         <th>Plot No</th>
-       
-        
+        <th>Name</th>
+        <th>CNIC</th>
+        <th>Area</th>
+        <th>Location</th>
+        <th>Price</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * FROM `transfer_history` INNER JOIN users_details ON users_details.login_id = transfer_history.reciver_id"
-        . ";";
+$sql = "SELECT login.name as officer_name, plot_request.plot_no,plot_request.status,plot_request.user_cnic,plot_request.user_name,plot_request.update_date as date,property_detail.unit_qty,property_detail.property_unit,property_detail.price,property_detail.property_location
+FROM ((plot_request
+INNER JOIN login ON login.login_id = plot_request.process_transfer_id)
+INNER JOIN property_detail ON plot_request.plot_no = property_detail.plot_no) WHERE plot_request.status='success'";
 $result = $conn->query($sql);
-if ($result->num_rows > 0):
+$count = 1;
+if ($result->num_rows > 0){
   while($row = $result->fetch_assoc()):
     // output data of each row
      
 ?>
    
       <tr>
-        <td><?=$row['id']?></td>
-        <td><?=$row['sender_id']?></td>
-        <td><?=$row['reciver_id']?></td>
+        <td><?=$count++?></td>
+        <td><?=$row['officer_name']?></td>
         <td><?=$row['plot_no']?></td>
-        
-       
-        
+        <td><?=$row['user_name']?></td>
+        <td><?=$row['user_cnic']?></td>
+        <td><?=$row['property_unit']?> <?=$row['unit_qty']?></td>
+        <td><?=$row['property_location']?></td>
+        <td><?=$row['price']?></td>
+        <td><?=$row['date']?></td>
 
       </tr>
-  <?php endwhile;endif;?>
+  <?php endwhile;}else{
+    echo "<tr>
+    <td colspan=4>Sorry No Transfer History Found:</td>
+    </tr>";
+  }
+
+  ?>
     </tbody>
   </table>
-  
-  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
 </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
  
@@ -93,11 +101,5 @@ $(document).ready(function(){
     var orderdataTable = $('#Table').DataTable({
 				"columnDefs":[],
 			});
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
 });
 </script>
