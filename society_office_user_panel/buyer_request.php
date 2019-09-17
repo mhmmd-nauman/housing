@@ -84,7 +84,7 @@ if ($result->num_rows > 0):
           }
           elseif($row['property_status']=='deactive' && $row['status']=='success')
                     {
-                      echo ' <a type="button" target="_blank" href="print_reciept.php?id='.$row['id'].'" class="btn w3-green" ><i class="fa w3-text-orange fa-print"></i> Print</a>';  
+                      echo ' <a type="button" target="_blank" href="print_reciept.php?id='.$row['id'].'&cnic='.$row['user_cnic'].'&plot_no='.$row['plot_no'].'&login_user='.$d['name'].'" class="btn w3-green" ><i class="fa w3-text-orange fa-print"></i> Print</a>';  
                     }
           else
                 {
