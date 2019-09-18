@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-
+require_once "base_url.php";
 if(isset($_POST["limit"], $_POST["start"]))
 {
 
@@ -11,24 +11,19 @@ if(isset($_POST["limit"], $_POST["start"]))
   echo '
  
  <!-- Blog entry -->
-  <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        
-         <span class="w3-right w3-tag w3-round black w3-border w3-border-orange"><span class="fa fa-star-half-o w3-text-orange"></span> For '.$row['purpose'].'</span>
-         <br>
-        <hr class="w3-clear">
-        <h2 class="w3-wide w3-text-orange">'.$row['property_title'].'</h2>
-        <h3 class="w3-opacity">'.$row['unit_qty'].' ' .$row['property_unit'].'</h3>
-         <span class="w3-right w3-tag w3-round w3-white w3-border w3-border-green">(pkr) '.$row['price'].' /=</span>
-        <h5 class="w3-opacity"> Property no# '.$row['plot_no'].'</h5>
-        <h5>'.$row['property_location'].', ' .$row['property_city'].'</h5>
+ <div class="w3-third w3-container w3-margin-bottom">
+ <img src="'.$base_url.'/assets/img/img.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
+ <div class="w3-container w3-white">
+   <p><b class="w3-wide">'.$row['property_title'].'</b></p>
+   <p class="w3-wide w3-opacity"><b class="w3-text-orange">Desc: </b> '.$row['property_desc'].'</p>
+   <p>'.$row['unit_qty'].' '.$row['property_unit'].'</p>
+   <p>
+    <address><b>Location: </b>  '.$row['property_location'].'</address>
+   </p>
+   <p>PKR '.$row['price'].'</p>
+ </div>
+</div> 
 
-        <img src="<?=$base_url?>assets/dataimg/'.$row['image'].'" style="width:100%" class="w3-margin-bottom">
-        <p>"'.$row['property_desc'].'"</p>
-        <hr class="w3-clear">
-        <h4> '.$row['name'].'</h4> <strong>'.$row['email'].'</strong>
-       
-      </div> 
-  <hr>
   
   ';
  }

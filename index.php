@@ -74,97 +74,16 @@ if(isset($_SESSION['uid'])){
   <!-- The Grid -->
   <div class="w3-row">
     <!-- Left Column -->
-    <div class="w3-col m3">
-      <?php
-      if($d):
-      ?>
-      <!-- Profile -->
-      <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
-          <h4 class="w3-center"><?= $d['name']?></h4>
-          <p class="w3-center"><?= $d['email']?></p>
-          <p class="w3-center"><img src="<?=$base_url?>assets/ads/<?php
-            if($d['type']=='member'){
-              echo 'user.png';
-            }else{
-              echo "admin.png";
-            }
-          ?>" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-          <hr>
-         <!--  <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-          <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
-        </div>
-      </div>
-      <br>
-      <?php endif;?>
-     
-      <br>
-      
-      
-      
-      <!-- Alert Box -->
-      <div class="w3-container  w3-hide-medium w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom ">
-        <img src="<?=$base_url?>assets/ads/ad9.gif" alt="ads">
-      </div>
-      
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <img src="<?=$base_url?>assets/ads/ad8.gif" alt="ads" width="340px" height="230px">
-          <!-- <p>Upcoming Events:</p>
-          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Holiday</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-        </div>
-      </div>
-      <br>
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-row">
-          <div class="w3-col m6">
-            <div class="w3-container">
-              <img src="<?=$base_url?>assets/ads/add12.jpeg" alt="Your Own home" width="150px" height="500px">
-              <!-- <p>Upcoming Events:</p>
-              <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-              <p><strong>Holiday</strong></p>
-              <p>Friday 15:00</p>
-              <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-            </div>
-          </div>
-          <div class="w3-col m6">
-            <div class="w3-container">
-              <img src="<?=$base_url?>assets/ads/add11.gif" alt="Your Own home" width="120px" height="500px">
-              <!-- <p>Upcoming Events:</p>
-              <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-              <p><strong>Holiday</strong></p>
-              <p>Friday 15:00</p>
-              <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+  
     
     <!-- Middle Column -->
-    <div class="w3-col m7">
-      <div id="" class="w3-container  w3-opacity-min w3-white w3-padding-16 myLink">
-        
-      </div>
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-              <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="CNIC or property no#">
-  <div class="input-group-append">
-    <button class="btn btn-success" type="submit">Go</button> 
+    <div class="w3-col m10">
+       <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Available Plots</h3>
+    <p class="w3-text-red w3-wide">* Note: you must <a href="./login.php" class="w3-text-blue">login</a> before purchasing plot.</p>
   </div>
-</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="w3-row-padding">
       
       
       
@@ -172,6 +91,7 @@ if(isset($_SESSION['uid'])){
       <div id="load_data_message"></div>
       
       <!-- End Middle Column -->
+      </div>
     </div>
     
     <!-- Right Column -->

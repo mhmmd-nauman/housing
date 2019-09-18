@@ -79,9 +79,9 @@ if ($result->num_rows > 0):
    </button>
 
    <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-      <li role = "presentation">
+      <!-- <li role = "presentation">
          <a role = "menuitem" class="btn btn-warning" data-toggle="modal"  data-target="#myModal" tabindex = "-1" >Transfer Property</a>
-      </li>
+      </li> -->
       <li role = "presentation" class = "divider"></li>
      
       
