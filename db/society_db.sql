@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 16, 2019 at 11:11 AM
+-- Generation Time: Sep 18, 2019 at 04:23 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -47,7 +47,8 @@ INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) 
 (28, 'Ch Musawer', 'admin123', 'liaquat31202@gmail.com', 'member', 'Active'),
 (29, 'Ghazanfar Ali', '1234', 'ghazanfar@gmail.com', 'society_officer', 'Active'),
 (30, 'Ghazanfar Ali', '123', 'musawer79@ovi.com', 'society_officer', 'Active'),
-(41, 'test', '123', 'test@gmail.com', 'society_officer', 'Active');
+(41, 'test', '123', 'test@gmail.com', 'society_officer', 'Active'),
+(42, 'Alaodeen', '1234', 'alaodeen@gmail.com', 'member', 'Active');
 
 -- --------------------------------------------------------
 
@@ -73,22 +74,15 @@ CREATE TABLE `plot_request` (
 --
 
 INSERT INTO `plot_request` (`id`, `plot_no`, `login_id`, `user_name`, `user_cnic`, `status`, `transfer_to`, `date`, `process_transfer_id`, `update_date`) VALUES
-(1, 'lsa542', 22, 'Musawer Ali', '432424234234', 'success', '13', '2019-09-15 16:16:12', '29', '2019-09-16'),
-(2, '54nml', 22, 'Musawer Ali', '432424234234', 'success', '22', '2019-09-15 16:24:11', '29', NULL),
-(3, 'lsa542', 22, 'Musawer Ali', '432424234234', 'success', '13', '2019-09-16 08:33:27', '29', '2019-09-16'),
-(4, 'lsa542', 13, 'Member', '234245425', 'success', '13', '2019-09-16 08:34:26', '29', '2019-09-16'),
-(5, '43alm', 28, 'Ch Musawer', '323232', 'success', '28', '2019-09-16 08:34:45', '29', '2019-09-16'),
-(6, '43alm', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 08:47:41', NULL, NULL),
-(7, '32323', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 09:01:22', NULL, NULL),
-(8, '32323', 13, 'Member', '234245425', 'pending', NULL, '2019-09-16 09:01:41', NULL, NULL),
-(9, '32323', 28, 'Ch Musawer', '323232', 'success', '28', '2019-09-16 09:02:02', '29', '2019-09-16'),
-(10, '54rtgf3', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 10:17:34', NULL, NULL),
-(11, '54rtgf3', 13, 'Member', '234245425', 'success', '13', '2019-09-16 10:20:56', '29', '2019-09-16'),
-(12, 'ytdhre32', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 10:48:38', NULL, NULL),
-(13, 'ytdhre32', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 10:48:39', NULL, NULL),
-(14, 'iipo9821', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-16 10:49:01', NULL, NULL),
-(15, 'iipo9821', 13, 'Member', '234245425', 'success', '13', '2019-09-16 10:49:31', '30', '2019-09-16'),
-(16, 'ytdhre32', 13, 'Member', '234245425', 'pending', NULL, '2019-09-16 10:49:35', NULL, NULL);
+(1, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
+(2, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
+(3, 'po98yu4', 42, 'Alaodeen', '3120343266934', 'success', '42', '2019-09-18 16:16:44', '29', '2019-09-18'),
+(4, 'hgpo90', 22, 'Musawer Ali', '432424234234', 'success', '22', '2019-09-18 16:16:57', '29', '2019-09-18'),
+(5, 'po98yu4', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:01', NULL, NULL),
+(6, 'lk90FD', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:03', NULL, NULL),
+(7, 'po98yu4', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:14', NULL, NULL),
+(8, 'iqb904', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:18', NULL, NULL),
+(9, 'hgpo90', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:20', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -123,24 +117,11 @@ CREATE TABLE `property_detail` (
 --
 
 INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `property_title`, `property_unit`, `unit_qty`, `price`, `property_desc`, `plot_no`, `property_city`, `property_location`, `transfer_login_ids`, `login_cnic`, `image`, `status`, `sold_date`, `buyer_cnic`, `buyer_name`) VALUES
-(5, 21, 'rent', 'home', 'Commersial Plaza', 'acer', 54, 2323, '43sd', '32323', 'Bahawalpur', '1A,Avenue', NULL, NULL, 'partner-APW-AMG1076-hd.jpg', 'deactive', NULL, NULL, NULL),
-(6, 28, 'rent', 'plot', 'Corner Plot', 'kanal', 4, 4000000, 'Alama iqbal town', '43alm', 'Lahore', '1A,Avenue', NULL, NULL, 'imj.jpg', 'deactive', NULL, NULL, NULL),
-(7, 29, 'sale', 'home', 'Full furnished house', 'kanal', 5, 5000000, 'Fully fuenished with swimming pool and grossy', '54nml', 'Karachi', 'DHA phase 2', NULL, NULL, 'c23d57aa-4e3d-4c60-b522-b0460407170b.jpg', 'deactive', NULL, NULL, NULL),
-(8, 1, 'rent', 'land', 'Fertile Land', 'acer', 1, 3200000, 'land for xxxxxxxxxxx', 'lsa542', 'Chicago', 'Near Air port', NULL, NULL, 'V34840H.jpg', 'deactive', NULL, NULL, NULL),
-(10, 29, '', '', 'Commercial Plot', 'kanal', 2, 700000, 'very good plot for investor', 'iipo9821', '', 'Near PORT', NULL, NULL, '', 'deactive', '2019-09-16', '234245425', NULL),
-(11, 29, '', '', 'cornert Plot', 'kanal', 4, 9000000, 'very good plot for family', 'ytdhre32', '', '1A block Q DHA', NULL, NULL, '', 'active', NULL, NULL, NULL),
-(12, 29, '', '', 'living plot', 'marla', 19, 3000000, 'good plot for house', 'yt763gf', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'active', NULL, NULL, NULL),
-(13, 29, '', '', 'living plot', 'marla', 7, 4309023, 'very good plot for family', '54rtgf3', '', 'airport road', NULL, NULL, '', 'deactive', '2019-09-16', '234245425', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `property_history`
---
-
-CREATE TABLE `property_history` (
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 29, '', '', 'cornert Plot', 'marla', 6, 2000000, 'Good plot for family', 'iqb904', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'active', NULL, NULL, NULL),
+(2, 29, '', '', '2 Street plot', 'kanal', 1, 100000, 'Road 40feet, Severage,Gas,Electricity', 'lk90FD', '', '1A block Q DHA', NULL, NULL, '', 'active', NULL, NULL, NULL),
+(3, 29, '', '', '1 Street plot', 'marla', 16, 6000000, 'Severage Electricity,Gas', 'hgpo90', '', '1A block Q DHA', NULL, NULL, '', 'deactive', '2019-09-18', '432424234234', NULL),
+(4, 29, '', '', 'Plot Near Pool', 'kanal', 1, 5000000, 'Near Park, Electricity,Gas INternet', 'po90oiy', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL),
+(5, 30, '', '', 'Commercial Plot', 'kanal', 2, 70000000, 'Good plot for businessman,', 'po98yu4', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'deactive', '2019-09-18', '3120343266934', NULL);
 
 -- --------------------------------------------------------
 
@@ -173,7 +154,8 @@ INSERT INTO `users_details` (`id`, `login_id`, `cnic`, `address`, `mobile_number
 (10, 22, '432424234234', 'H/s no 229 khan colony multan road near shama canima bahawalpur', '4234234234', ''),
 (11, 28, '323232', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
 (12, 29, '3120002343214', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
-(13, 30, '53211234', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', '');
+(13, 30, '53211234', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
+(14, 42, '3120343266934', 'Sokar Yazman', '03007287408', '');
 
 --
 -- Indexes for dumped tables
@@ -198,12 +180,6 @@ ALTER TABLE `property_detail`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `property_history`
---
-ALTER TABLE `property_history`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users_details`
 --
 ALTER TABLE `users_details`
@@ -217,27 +193,22 @@ ALTER TABLE `users_details`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `plot_request`
 --
 ALTER TABLE `plot_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `property_detail`
 --
 ALTER TABLE `property_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `property_history`
---
-ALTER TABLE `property_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users_details`
 --
 ALTER TABLE `users_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
