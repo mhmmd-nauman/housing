@@ -1,8 +1,20 @@
 <?php
-include "user_header.php";
-require_once "../db.php";
 
+require_once "../db.php";
+include "user_header.php";
 $d=$_SESSION['uid'];
+
+$status= $d['status'];
+if($status=="Active"){
+ 
+  
+
+
+
+
+
+
+
 $login_id =  $d['login_id'];
 if(isset($_REQUEST['action'])){
     switch($_REQUEST['action']){
@@ -88,6 +100,7 @@ if ($result->num_rows > 0):
   </table>
 
 </div>
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
  
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
@@ -108,4 +121,14 @@ $(document).ready(function(){
 });
 </script>
 
+  <?php
   
+}else{
+  echo '<div class="container w3-padding-64">
+            <div class=" w3-panel w3-orange w3-opacity w3-card-4">
+            <h4 class="w3-wide"> * once your <strong>account has been approved</strong> you can book you plot.</h4>
+          </div>
+      </div>';
+}
+  
+  ?>

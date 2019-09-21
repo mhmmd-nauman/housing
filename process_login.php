@@ -3,7 +3,7 @@ session_start();
 require_once "db.php";
 $email = $_POST['email'];
 $password = $_POST['password'];
-$sql = "SELECT * FROM `login` where `email`='$email' and `password` = '$password' and status = 'Active';";
+$sql = "SELECT * FROM `login` where `email`='$email' and `password` = '$password';";
 //exit();
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();

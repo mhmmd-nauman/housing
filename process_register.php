@@ -35,7 +35,8 @@ $query_db="SELECT * FROM login WHERE `email`='$email'";
                     'type'=>$type,
                     'image'=>$image,
                     'city'=>$city, 
-                    'cnic'=>$cnic
+                    'cnic'=>$cnic,
+                    'status'=>$status
                 );
 
                 

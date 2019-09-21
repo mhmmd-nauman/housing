@@ -52,6 +52,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
   <hr>
+  <?php
+  if($d['status']=='Active'):
+  ?>
   <div class="w3-container">
     <h5>Dashboard</h5>
   </div>
@@ -64,6 +67,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     <br><br>
   </div>
+  <?php
+  endif;
+  ?>
 </nav>
 
 
