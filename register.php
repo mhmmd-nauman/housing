@@ -40,7 +40,7 @@ include "header/header.php";?>
               <select class="form-control" name="type" id="type" required>
                
                 <option value="member">Member</option>
-                <!-- <option disabled value="society_officer">Society Officer</option> -->
+                <option value="society_officer">Society Officer</option> 
               </select>
               <div class="valid-feedback">Valid.</div>
               <div class="invalid-feedback">Please fill out this field.</div>
@@ -119,5 +119,3 @@ $(".custom-file-input").on("change", function() {
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
 </script>
-<?php
-include "header/login_footer.php";?>

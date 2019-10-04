@@ -106,10 +106,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:300px;">
     <?php
-        $d=$_SESSION['uid'];
-        echo $d['name'];
+        
         
         
    } else {

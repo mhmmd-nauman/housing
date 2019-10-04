@@ -83,8 +83,8 @@ require_once "base_url.php";
                           }
                   }else{
                     echo '
-                    <a href="'.$base_url.login.'.'.php.'" class="w3-bar-item w3-button w3-light-grey">Login</a>
-            <a href="'.$base_url.register.'.'.php.'" class="w3-bar-item w3-button">Register</a>
+                    <a href="'.$base_url.'login.php" class="w3-bar-item w3-button w3-light-grey">Login</a>
+            <a href="'.$base_url.'register.php" class="w3-bar-item w3-button">Register</a>
                     ';
                   }
               ?>
