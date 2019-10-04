@@ -95,7 +95,7 @@ WHERE property_detail.plot_no='$plot_no' AND property_detail.login_id='$reciver_
                                </tr>
                                
                                <tr>
-                               <td colspan="2" style=" text-align:center;background-color: #f1f1c1; padding: 25px;">Property Information</td>
+                               <td colspan="2" style=" text-align:center;background-color: #f1f1c1; padding: 25px;">Plot Information</td>
                                </tr>
                
                <tr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 18, 2019 at 04:23 PM
+-- Generation Time: Oct 04, 2019 at 11:41 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `society_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_amount` int(11) NOT NULL,
+  `payment_status` enum('pending','success') NOT NULL,
+  `bill_type` enum('wapda','sui gas','ptcl','water','severage') NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `society_officer_id` int(11) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `plot_no` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,7 +80,7 @@ CREATE TABLE `plot_request` (
   `login_id` int(50) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `user_cnic` varchar(50) NOT NULL,
-  `status` enum('success','pending') NOT NULL DEFAULT 'pending',
+  `status` enum('success','pending','process') NOT NULL DEFAULT 'pending',
   `transfer_to` varchar(50) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `process_transfer_id` varchar(50) DEFAULT NULL,
@@ -77,7 +95,7 @@ INSERT INTO `plot_request` (`id`, `plot_no`, `login_id`, `user_name`, `user_cnic
 (1, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
 (2, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
 (3, 'po98yu4', 42, 'Alaodeen', '3120343266934', 'success', '42', '2019-09-18 16:16:44', '29', '2019-09-18'),
-(4, 'hgpo90', 22, 'Musawer Ali', '432424234234', 'success', '22', '2019-09-18 16:16:57', '29', '2019-09-18'),
+(4, 'hgpo90', 22, 'Musawer Ali', '432424234234', 'process', '22', '2019-09-18 16:16:57', '29', '2019-09-18'),
 (5, 'po98yu4', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:01', NULL, NULL),
 (6, 'lk90FD', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:03', NULL, NULL),
 (7, 'po98yu4', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:14', NULL, NULL),
@@ -126,6 +144,16 @@ INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `pr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transfer_history`
+--
+
+CREATE TABLE `transfer_history` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users_details`
 --
 
@@ -162,6 +190,12 @@ INSERT INTO `users_details` (`id`, `login_id`, `cnic`, `address`, `mobile_number
 --
 
 --
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -180,6 +214,12 @@ ALTER TABLE `property_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transfer_history`
+--
+ALTER TABLE `transfer_history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users_details`
 --
 ALTER TABLE `users_details`
@@ -189,6 +229,11 @@ ALTER TABLE `users_details`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `login`
 --
@@ -204,6 +249,11 @@ ALTER TABLE `plot_request`
 --
 ALTER TABLE `property_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `transfer_history`
+--
+ALTER TABLE `transfer_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users_details`
 --

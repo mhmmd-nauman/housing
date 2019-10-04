@@ -82,11 +82,11 @@ if ($result->num_rows > 0):
          <?php 
          if($row['transfer_to']==''){
            echo "<b class='w3-orange'>Under Review</b>";
-         }elseif($row['transfer_to']==$login_id){
+         }elseif($row['transfer_to']==$login_id  AND $row['status']=='success'){
           echo "<b class='w3-green'>Congrats! Meet Society Officer</b>";
          }
          else{
-          echo "<b class='w3-red'>Sorry! you`re not get this.</b>";
+          echo "<b class='w3-red'>sorry now this plot own by other.</b>";
          }
          
          ?>

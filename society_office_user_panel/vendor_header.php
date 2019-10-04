@@ -98,6 +98,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <i class="fa fa-plus w3-text-green fa-fw"></i>Add Plots</a>
          <a href="./transfer_history.php" class="w3-bar-item w3-button w3-padding">
          <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Plot History</a>
+         <a href="add_bill.php" class="w3-bar-item w3-button w3-padding">
+         <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Add Bill</a>
   </div>
 </nav>
 

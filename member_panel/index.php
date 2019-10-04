@@ -18,7 +18,7 @@ echo $login_id = $d['login_id'];
 <div class="w3-row-padding">
   <button class="btn btn-primary w3-green" data-toggle="modal" data-target="#myModal">
   <span class="fa fa-plus-circle"></span>
-  Add Property
+  Add Plot
   </button>
   <?php
   $sql = "SELECT * FROM `product` where 1 order by `id` DESC";
@@ -39,14 +39,14 @@ echo $login_id = $d['login_id'];
       
       <!-- Modal Header -->
       <div class="modal-header">
-        <h1 class="modal-title">Add Property </h1>
+        <h1 class="modal-title">Add Plot </h1>
         <button type="button" class="close" data-dismiss="modal">×</button>
       </div>
       
       <!-- Modal body -->
       <div class="modal-body">
         <div class="w3-panel bg-info  w3-card-4">
-          Property Type and Location
+          Plot Type and Location
         </div>
         <br>
         <br>
@@ -78,7 +78,7 @@ echo $login_id = $d['login_id'];
               <!-- plot type -->
               <div class="col-sm-8">
                 <div class="form-group">
-                  <label><h3>Property Type</h3></label>
+                  <label><h3>Plot Type</h3></label>
                   <div class="w3-tag  w3-green" >
                     <div class="w3-tag w3-green w3-border w3-border-white">
                       <input class="w3-radio" type="radio" name="property_type" value="home" required>
@@ -138,17 +138,17 @@ echo $login_id = $d['login_id'];
               <!-- First col -->
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="property_title">Property Title:</label>
+                  <label for="property_title">Plot Title:</label>
                   <input type="text" class="form-control" id="property_title" placeholder="Propert Title" name="property_title" required>
                   <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Your Property Title.</div>
+                  <div class="invalid-feedback">Your Plot Title.</div>
                 </div>
                 <!-- propert Description -->
                 <div class="form-group">
                   <label for="property_desc">Propert Description:</label>
                   <textarea class="form-control" rows="3" cols="25" name="property_desc" required id="property_desc"></textarea>
                   <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Property Description</div>
+                  <div class="invalid-feedback">Plot Description</div>
                 </div>
                 
               </div>
@@ -205,7 +205,7 @@ echo $login_id = $d['login_id'];
             </div>
 
           </div>
-          <button type="submit" name="submit" class="w3-button w3-center w3-green"> <div class="spinner-grow text-danger"></div> Submit Property</button>
+          <button type="submit" name="submit" class="w3-button w3-center w3-green"> <div class="spinner-grow text-danger"></div> Submit Plot</button>
         </form>
       </div>
       
@@ -216,4 +216,4 @@ echo $login_id = $d['login_id'];
       
     </div>
   </div>
-</div>
+</div
