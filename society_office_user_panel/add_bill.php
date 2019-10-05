@@ -73,7 +73,7 @@ Start  Modal of add Bill
             $sql = "SELECT * FROM plot_request where status='success' OR status ='process'";
             $result = $conn->query($sql);
             $count = 1;
-         
+            
             ?>
             <div class="row">
             <div class="col-sm-4">
@@ -85,8 +85,10 @@ Start  Modal of add Bill
                      
               <?php
               while($row = $result->fetch_assoc()){
+             
               ?>
-              <option value="<?=$row['plot_no']?>"><?=$row['plot_no']?> </option>
+              
+              <option  value="<?=$row['plot_no'].','.$row['login_id'];?>"><?=$row['plot_no']?> </option>
                        
               <?php }?>
                       </select>
@@ -94,6 +96,7 @@ Start  Modal of add Bill
                   <div class="invalid-feedback">Your Plot No#.</div>
                 </div>
                 </div>
+               
                 <!-- propert Description -->
                 <div class="form-group">
                   <label for="property_desc">Desc</label>
