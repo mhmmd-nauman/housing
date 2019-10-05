@@ -57,76 +57,78 @@ Start  Modal of add Bill
             <!-- Second Row -->
             <!-- Property Detail -->
             <?php
-            $sql = "SELECT * FROM plot_request where status='success' and status = 'process'";
+            $sql = "SELECT * FROM plot_request where status='success' OR status ='process'";
             $result = $conn->query($sql);
             $count = 1;
-            if ($result->num_rows > 0): 
+         
             ?>
             <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="property_title">Plot Title:</label>
-                  <input type="text" class="form-control" id="property_title" placeholder="Plot Title" name="property_title" required>
+                  <label for="property_title">Plot No#</label>
+                  <div class="form-group">
+                      
+                      <select class="form-control" id="plot_no" name="plot_no">
+                     
+              <?php
+              while($row = $result->fetch_assoc()){
+              ?>
+              <option value="<?=$row['plot_no']?>"><?=$row['plot_no']?> </option>
+                       
+              <?php }?>
+                      </select>
                   <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Your Plot Title.</div>
+                  <div class="invalid-feedback">Your Plot No#.</div>
+                </div>
                 </div>
                 <!-- propert Description -->
                 <div class="form-group">
-                  <label for="property_desc">Plot Description:</label>
-                  <textarea class="form-control" rows="3" cols="25" name="property_desc" required id="property_desc"></textarea>
+                  <label for="property_desc">Desc</label>
+                  <textarea class="form-control" rows="3" cols="25" name="desc" required id="desc"></textarea>
                   <div class="valid-feedback">Valid.</div>
                   <div class="invalid-feedback">Plot Description</div>
                 </div>
-                
+  
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="location">Location:</label>
-                  <input type="text" class="form-control" id="location" placeholder="1A, Avenue 3rd, xyz Road" name="property_location" required>
+                  <label>Bill Type</label>
+                  <select name="bill_type" class="form-control" id="bill_type">
+                  <option value="sui gas">Wapda</option>
+                  <option value="ptcl">Ptcl</option>
+                  <option value="water">water</option>
+                  <option value="severage">Severage</option>
+                  
+
+                  </select>
                   <div class="valid-feedback">Valid.</div>
                   <div class="invalid-feedback">Your Area. XYZ road, near xyz.</div>
                 </div>
 
-                <div class="form-group">
-                <label for="property_desc">Land Area :</label>
-                <div class="input-group mt-3 mb-3">
-                  <div class="input-group-prepend">
-                    <div class="form-group">
-                      
-                      <select class="form-control" name="unit" required id="unit">
-                        <option></option>
-                        <option value="marla">Marla</option>
-                        <option value="acer">Acer</option>
-                        <option value="kanal">Kanal</option>
-                      </select>
-                    </div>
-                  </div>
-                  <input type="number" class="form-control" placeholder="2 marla ,2 kanal" name="unit_qty" id="unit_qty" required>
-                </div>
-                </div>
+               
               </div>
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="property_title">All Inclusinve price (pkr):</label>
-                  <input type="number" class="form-control" id="price" placeholder="Price (pkr)" name="price" required>
+                  <label for="property_title">Total All Inclusinve (taxes):</label>
+                  <input type="number" class="form-control" id="total" placeholder="Total Bill" name="total" required>
                   <div class="valid-feedback">Valid.</div>
                   <div class="invalid-feedback">Price in (pkr).</div>
                 </div>
-
+                
                 <div class="form-group">
-                  <label for="property_title">Plot no#</label>
-                  <input type="text" class="form-control" id="plot_no" placeholder="plot no#" name="plot_no" required>
+                  <label for="property_title">BIll Ref no#</label>
+                  <input type="text" class="form-control" id="ref_no" placeholder="Ref no#" name="ref_no" required>
                   <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Plot no#</div>
+                  <div class="invalid-feedback">Ref no#</div>
                 </div>
               </div>
               
             </div>
-            <?php endif; ?>
+        
             <br>
            </div>
-          <button type="submit" name="submit" class="w3-button w3-block w3-center w3-green"> <div class="spinner-grow text-danger"></div> <b> Add Plot</b></button>
+          <button type="submit" name="submit" class="w3-button w3-block w3-center w3-green"> <div class="spinner-grow text-danger"></div> <b> Add Bill</b></button>
         </form>
       </div>
       
@@ -154,7 +156,7 @@ end  Modal of add Bill
       <tr>
       <th style="display: none;">ID</th>
       <th>PlotNo#</th>
-      <th>User Name</th>
+      <th>Ref NO#</th>
       <th>Bill Type</th>
       <th>Payment Status</th>
       <th>Amount</th>
