@@ -160,7 +160,7 @@ end  Modal of add Bill
       <th>Bill Type</th>
       <th>Payment Status</th>
       <th>Amount</th>
-      <th>Status</th>
+      <th>Gen BY</th>
       <th>Action</th>
      
         </tr>
@@ -170,11 +170,9 @@ end  Modal of add Bill
     <?php
 $sql = 
 
-" SELECT property_detail.property_unit,property_detail.property_location,property_detail.unit_qty,
-plot_request.id,plot_request.login_id, property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.process_transfer_id,
-plot_request.user_cnic,plot_request.status ,plot_request.transfer_to,plot_request.id,property_detail.status as property_status
-FROM property_detail
-INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no ORDER BY plot_request.id DESC
+" SELECT *
+FROM login
+INNER JOIN bill ON login.login_id=  bill.society_officer_id ORDER BY bill.id DESC
 
 ";
 $result = $conn->query($sql);
@@ -187,34 +185,20 @@ if ($result->num_rows > 0):
       <tr>
       <td style="display: none;"><?=$row['id']?></td>
     <td><?=$row['plot_no']?></td>
-    <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
-  <td><?=$row['user_cnic']?></td>
-  <td><?=$row['user_name']?></td>
-    <td><?=$row['property_location']?></td>
+    <td><?=$row['ref_no']?></td>
+  <td><?=$row['bill_type']?></td>
+  <td><?=$row['payment_status']?></td>
+    <td><?=$row['total_amount']?></td>
          
-         <td><?=$row['price']?></td>
+         <td><?=$row['name']?></td>
          <td>
-          <?php
-          if($row['property_status']=='active' && $row['status']=='pending'){
-            ?>
-<div class="btn-group-vertical">
-                    <button type="button" id="<?= $row['id'];?>" plot_no="<?=$row['plot_no']?>" user_id="<?=$row['login_id']?>" user_cnic="<?=$row['user_cnic']?>" login_id="<?=$login_id?>" class="btn btn-primary transfer" >Transfer</button>
-
-                
-            </div>
-
-            <?php
+         <?php
+          if($row['payment_status']=='pending'){
+            echo ' <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
+            Delete
+         </a>';
           }
-          elseif($row['property_status']=='deactive' && $row['status']=='success')
-                    {
-                      echo ' <a type="button" target="_blank" href="print_reciept.php?id='.$row['id'].'&cnic='.$row['user_cnic'].'&plot_no='.$row['plot_no'].'&login_user='.$d['name'].'" class="btn w3-green" ><i class="fa w3-text-orange fa-print"></i> Print</a>';  
-                    }
-          else
-                {
-       
-        echo '<button type="button"  class="btn w3-red w3-opacity delete">Alot to others</button>';
-                }
-          ?>
+         ?>
             
          </td>
       
