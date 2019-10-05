@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 05, 2019 at 03:06 PM
+-- Generation Time: Oct 05, 2019 at 11:23 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -46,7 +46,7 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`ip_address`, `user_id`, `total_amount`, `payment_status`, `bill_type`, `date`, `society_officer_id`, `user_name`, `plot_no`, `ref_no`, `descrip`, `id`) VALUES
-(NULL, NULL, 3200, 'pending', 'sui gas', '2019-10-05 08:12:59', 29, NULL, 'po98yu4', 'e2342342', 'desccc', 4);
+(NULL, NULL, 3200, 'success', 'sui gas', '2019-10-05 08:12:59', 29, NULL, 'po98yu4', 'e2342342', 'desccc', 4);
 
 -- --------------------------------------------------------
 
@@ -168,8 +168,21 @@ INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `pr
 (1, 29, '', '', 'cornert Plot', 'marla', 6, 2000000, 'Good plot for family', 'iqb904', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'active', NULL, NULL, NULL),
 (2, 29, '', '', '2 Street plot', 'kanal', 1, 100000, 'Road 40feet, Severage,Gas,Electricity', 'lk90FD', '', '1A block Q DHA', NULL, NULL, '', 'active', NULL, NULL, NULL),
 (3, 29, '', '', '1 Street plot', 'marla', 16, 6000000, 'Severage Electricity,Gas', 'hgpo90', '', '1A block Q DHA', NULL, NULL, '', 'deactive', '2019-09-18', '432424234234', NULL),
-(4, 29, '', '', 'Plot Near Pool', 'kanal', 1, 5000000, 'Near Park, Electricity,Gas INternet', 'po90oiy', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL),
-(5, 30, '', '', 'Commercial Plot', 'kanal', 2, 70000000, 'Good plot for businessman,', 'po98yu4', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'deactive', '2019-09-18', '3120343266934', NULL);
+(4, 29, '', '', 'Plot Near Pool', 'kanal', 1, 5000000, 'Near Park, Electricity,Gas INternet', 'po90oiy', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transfer_track`
+--
+
+CREATE TABLE `transfer_track` (
+  `id` int(11) NOT NULL,
+  `old_cnic` varchar(20) NOT NULL,
+  `new_cnic` varchar(20) NOT NULL,
+  `plot_no` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -240,6 +253,12 @@ ALTER TABLE `property_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transfer_track`
+--
+ALTER TABLE `transfer_track`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users_details`
 --
 ALTER TABLE `users_details`
@@ -274,6 +293,11 @@ ALTER TABLE `plot_request`
 --
 ALTER TABLE `property_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `transfer_track`
+--
+ALTER TABLE `transfer_track`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users_details`
 --
