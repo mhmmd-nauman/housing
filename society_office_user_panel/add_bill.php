@@ -4,7 +4,20 @@ require_once "../db.php";
 $d=$_SESSION['uid'];
 
  $login_id = $d['login_id'];
-
+ if(isset($_REQUEST['action'])){
+  switch($_REQUEST['action']){
+      case"update":
+         $sql = " update `bill` set payment_status = 'success' where id = '".$_REQUEST['id']."' AND plot_no = '".$_REQUEST['plot_no']."';";
+         $conn->query($sql);
+         break;
+    
+      case"delete":
+          
+          $sql = "update `bill` set status = 'blocked' where login_id = '".$_REQUEST['id']."';";
+          $conn->query($sql);
+         break;
+  }
+}  
  
 
 ?>
@@ -194,9 +207,15 @@ if ($result->num_rows > 0):
          <td>
          <?php
           if($row['payment_status']=='pending'){
-            echo ' <a role = "menuitem" class="btn btn-danger" tabindex = "-1" href = "?action=delete&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
-            Delete
-         </a>';
+            ?>
+  <a role = "menuitem" class="btn btn-success" tabindex = "-1" href = "?action=update&plot_no=<?=$row['plot_no']?>&id=<?=$row['id']?>" onclick="return confirmAction();">
+            Paid Bill
+         </a>
+            <?php
+          }else{
+            echo '
+              <button disabled class="fa fa-check w3-btn w3-green ">Paid</button>
+            ';
           }
          ?>
             
@@ -213,3 +232,19 @@ if ($result->num_rows > 0):
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
  
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+<script>
+  function confirmAction(){
+        if(confirm("Are you sure to complete the action?")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+$(document).ready(function(){
+    var orderdataTable = $('#Table').DataTable({
+				"columnDefs":[],
+			});
+
+});
+</script>
