@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 05, 2019 at 11:23 PM
+-- Generation Time: Oct 06, 2019 at 01:42 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -46,7 +46,8 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`ip_address`, `user_id`, `total_amount`, `payment_status`, `bill_type`, `date`, `society_officer_id`, `user_name`, `plot_no`, `ref_no`, `descrip`, `id`) VALUES
-(NULL, NULL, 3200, 'success', 'sui gas', '2019-10-05 08:12:59', 29, NULL, 'po98yu4', 'e2342342', 'desccc', 4);
+(NULL, 44, 9000, 'pending', 'sui gas', '2019-10-06 07:52:56', 29, NULL, '90okju', 'e52342342', 'Paid as soon as posible', 5),
+(NULL, 43, 2000, 'pending', 'severage', '2019-10-06 07:54:24', 29, NULL, 'pl90uyt', 'e4509utr', 'paid as soon as posible', 6);
 
 -- --------------------------------------------------------
 
@@ -60,13 +61,6 @@ CREATE TABLE `bill_track` (
   `ref_no` varchar(30) NOT NULL,
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `bill_track`
---
-
-INSERT INTO `bill_track` (`id`, `bill_id`, `ref_no`, `total`) VALUES
-(3, 4, 'e2342342', 3200);
 
 -- --------------------------------------------------------
 
@@ -89,14 +83,9 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) VALUES
 (1, 'Saima', '1234', 'saima@gmail.com', 'admin', 'Active'),
-(13, 'Member', '1234', 'member@gmail.com', 'member', 'Active'),
-(19, '', '', '', '', 'Active'),
-(22, 'Musawer Ali', 'adminadmin', 'admin@admin.com', 'member', 'Active'),
-(28, 'Ch Musawer', 'admin123', 'liaquat31202@gmail.com', 'member', 'Active'),
 (29, 'Ghazanfar Ali', '1234', 'ghazanfar@gmail.com', 'society_officer', 'Active'),
-(30, 'Ghazanfar Ali', '123', 'musawer79@ovi.com', 'society_officer', 'Active'),
-(41, 'test', '123', 'test@gmail.com', 'society_officer', 'Active'),
-(42, 'Alaodeen', '1234', 'alaodeen@gmail.com', 'member', 'Active');
+(43, 'Alaodeen', '1234', 'alaodeen@gmail.com', 'member', 'Active'),
+(44, 'Ali Raza', 'aliraza123', 'aliraza.k2@gmail.com', 'member', 'Active');
 
 -- --------------------------------------------------------
 
@@ -110,7 +99,7 @@ CREATE TABLE `plot_request` (
   `login_id` int(50) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `user_cnic` varchar(50) NOT NULL,
-  `status` enum('success','pending') NOT NULL DEFAULT 'pending',
+  `status` enum('success','pending','process') NOT NULL DEFAULT 'pending',
   `transfer_to` varchar(50) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `process_transfer_id` varchar(50) DEFAULT NULL,
@@ -122,15 +111,11 @@ CREATE TABLE `plot_request` (
 --
 
 INSERT INTO `plot_request` (`id`, `plot_no`, `login_id`, `user_name`, `user_cnic`, `status`, `transfer_to`, `date`, `process_transfer_id`, `update_date`) VALUES
-(1, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
-(2, 'iqb904', 42, 'Alaodeen', '3120343266934', 'pending', NULL, '2019-09-18 16:16:38', NULL, NULL),
-(3, 'po98yu4', 42, 'Alaodeen', '3120343266934', 'success', '42', '2019-09-18 16:16:44', '29', '2019-09-18'),
-(4, 'hgpo90', 22, 'Musawer Ali', '432424234234', 'success', '22', '2019-09-18 16:16:57', '29', '2019-09-18'),
-(5, 'po98yu4', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:01', NULL, NULL),
-(6, 'lk90FD', 22, 'Musawer Ali', '432424234234', 'pending', NULL, '2019-09-18 16:17:03', NULL, NULL),
-(7, 'po98yu4', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:14', NULL, NULL),
-(8, 'iqb904', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:18', NULL, NULL),
-(9, 'hgpo90', 28, 'Ch Musawer', '323232', 'pending', NULL, '2019-09-18 16:17:20', NULL, NULL);
+(2, '90okju', 44, 'Ali Raza', '4130345134512', 'success', '44', '2019-10-06 12:49:50', '29', '2019-10-06'),
+(3, 'pl90uyt', 44, 'Ali Raza', '4130345134512', 'pending', NULL, '2019-10-06 12:49:54', NULL, NULL),
+(4, '90okju', 43, 'Alaodeen', '312094134654', 'process', '0', '2019-10-06 12:50:13', NULL, NULL),
+(5, 'pl90uyt', 43, 'Alaodeen', '312094134654', 'success', '43', '2019-10-06 12:50:18', '29', '2019-10-06'),
+(8, '90okju', 43, 'Alaodeen', '312094134654', 'success', '43', '2019-10-06 13:33:34', '29', '2019-10-06');
 
 -- --------------------------------------------------------
 
@@ -165,10 +150,9 @@ CREATE TABLE `property_detail` (
 --
 
 INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `property_title`, `property_unit`, `unit_qty`, `price`, `property_desc`, `plot_no`, `property_city`, `property_location`, `transfer_login_ids`, `login_cnic`, `image`, `status`, `sold_date`, `buyer_cnic`, `buyer_name`) VALUES
-(1, 29, '', '', 'cornert Plot', 'marla', 6, 2000000, 'Good plot for family', 'iqb904', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'active', NULL, NULL, NULL),
-(2, 29, '', '', '2 Street plot', 'kanal', 1, 100000, 'Road 40feet, Severage,Gas,Electricity', 'lk90FD', '', '1A block Q DHA', NULL, NULL, '', 'active', NULL, NULL, NULL),
-(3, 29, '', '', '1 Street plot', 'marla', 16, 6000000, 'Severage Electricity,Gas', 'hgpo90', '', '1A block Q DHA', NULL, NULL, '', 'deactive', '2019-09-18', '432424234234', NULL),
-(4, 29, '', '', 'Plot Near Pool', 'kanal', 1, 5000000, 'Near Park, Electricity,Gas INternet', 'po90oiy', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL);
+(1, 29, '', '', 'Commercial Plot', 'marla', 10, 300000, 'good plot for investor', 'pl90uyt', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'deactive', '2019-10-06', '312094134654', NULL),
+(2, 29, '', '', 'cornert Plot', 'kanal', 1, 809996, 'Severage, Gas&lt;telephone', '90okju', '', '1A block Q DHA', NULL, NULL, '', 'deactive', '2019-10-06', '4130345134512', NULL),
+(3, 29, '', '', 'living plot', 'acer', 18, 600000, 'near HBL chok', 'lsa542', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -204,19 +188,10 @@ CREATE TABLE `users_details` (
 --
 
 INSERT INTO `users_details` (`id`, `login_id`, `cnic`, `address`, `mobile_number`, `image`) VALUES
-(1, 11, '123456789', '195 f', '031388888', 'eee'),
-(2, 1, '66565555465456', 'tet', '6666', 'hhh'),
-(3, 13, '234245425', '234', '234324', '234'),
-(4, NULL, 'cnic', 'address', 'contact', ''),
-(5, 3, 'cnic', 'address', 'contact', ''),
-(6, 17, '4324242', 'H/s no 229 khan colony multan road near shama canima bahawalpur', '4234234', ''),
-(7, 19, '', '', '', ''),
-(9, 21, '534534534', 'H/s no 229 khan colony multan road near shama canima bahawalpur', '53453453453', ''),
-(10, 22, '432424234234', 'H/s no 229 khan colony multan road near shama canima bahawalpur', '4234234234', ''),
-(11, 28, '323232', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
+(2, 1, '31202693123', 'tet', '6666', 'hhh'),
 (12, 29, '3120002343214', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
-(13, 30, '53211234', 'pak jali house, Near Shama Canima Multan Road Bahawalpur', '+923336513516', ''),
-(14, 42, '3120343266934', 'Sokar Yazman', '03007287408', '');
+(15, 43, '312094134654', 'Sokar yazman chack no 105,', '+9230554560123', ''),
+(16, 44, '4130345134512', 'Trust Colony Bahawalpur', '03007287408', '');
 
 --
 -- Indexes for dumped tables
@@ -272,7 +247,7 @@ ALTER TABLE `users_details`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `bill_track`
 --
@@ -282,17 +257,17 @@ ALTER TABLE `bill_track`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `plot_request`
 --
 ALTER TABLE `plot_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `property_detail`
 --
 ALTER TABLE `property_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `transfer_track`
 --
@@ -302,7 +277,7 @@ ALTER TABLE `transfer_track`
 -- AUTO_INCREMENT for table `users_details`
 --
 ALTER TABLE `users_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
