@@ -34,10 +34,9 @@ if(isset($_REQUEST['action'])){
    
 ?>
 <!-- Header -->
-<div class="w3-container" style="margin-top:10px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+<div class="w3-container" style="margin-top:20px" id="showcase">
+    <h1 class="w3-jumbo"><b>Plot Booking Requests</b></h1>
+    
   </div>
 <div class="container mt-3" style="border-top:1px solid; border-style:inset; padding-top: 50px;">
   <table class="w3-table-all w3-hoverable" id="Table">
@@ -45,7 +44,7 @@ if(isset($_REQUEST['action'])){
       <tr>
       <th>PlotNo#</th>
       <th>Unit</th>
-      <th>Location</th>
+      <th>Description</th>
       <th>Price</th>
       <th>Status</th>
      

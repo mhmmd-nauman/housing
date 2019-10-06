@@ -23,10 +23,8 @@ if(isset($_REQUEST['action'])){
    
 ?>
 <!-- Header -->
-<div class="w3-container" style="margin-top:10px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+<div class="w3-container" style="margin-top:20px" id="showcase">
+    <h1 class="w3-jumbo"><b>My Plots</b></h1>
   </div>
 <div class="container mt-3" style="border-top:1px solid; border-style:inset; padding-top: 50px;">
   
@@ -39,18 +37,23 @@ if(isset($_REQUEST['action'])){
         <th>Desc</th>
         
         
-        <th>Location</th>
+        <th>Owner</th>
         
-        <th>Type</th>
+        
         <th>Price</th>
-        <th>Buy Request</th>
+        <th>Booking Request</th>
         
       </tr>
     </thead>
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT * from property_detail where `status` = 'active'";
+
+$sql = "SELECT * from property_detail "
+        . " LEFT JOIN users_details ON property_detail.owner = users_details.login_id "
+        . " LEFT JOIN login ON users_details.login_id = login.login_id"
+        
+        . " where 1";
 $result = $conn->query($sql);
 if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):
@@ -64,12 +67,12 @@ if ($result->num_rows > 0):
         <td><?=$row['unit_qty']?> <?=$row['property_unit']?></td>
         <td><?=$row['property_desc']?></td>
        
-        <td><?=$row['property_location']?></td>
-         <td><?=$row['property_type']?></td>
+         <td><?=$row['name']?><br><?=$row['cnic']?></td>
+         
          <td>PKR <?=$row['price']?></td>
         
         <td>
-        <a type="button" id="request" name="<?=$user_name?>" plot_no="<?=$row['plot_no']?>" login_id="<?=$login_id?>" class="btn request w3-red btn-default">Buy Request</a>
+        <a type="button" id="request" name="<?=$user_name?>" plot_no="<?=$row['plot_no']?>" login_id="<?=$login_id?>" class="btn request w3-red btn-default">Send Booking Request</a>
         </td>
         
 

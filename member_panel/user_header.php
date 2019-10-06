@@ -45,9 +45,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
       
-      
-      <a href="<?=$base_url?>../index.php" class="w3-bar-item w3-text-red w3-button"><i class="fa fa-home"></i> Home</a>
-      
       <a href="<?=$base_url?>../signout.php" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> signout</a>
     </div>
   </div>
@@ -62,9 +59,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
      <!-- <a href="index.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green fa-fw"></i>  Add Plot</a> -->
 
-  <a href="property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-binoculars w3-text-orange fa-fw"></i> Plot Request</a>
-  <a href="bill_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-binoculars w3-text-orange fa-fw"></i> Bill</a>
-  <a href="all_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i> Plots</a>
+  <a href="property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-binoculars w3-text-orange fa-fw"></i> My Plot Booking Request</a>
+  <a href="bill_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-binoculars w3-text-orange fa-fw"></i> My Utility Bill</a>
+  <a href="all_property_detail.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home w3-text-green fa-fw"></i> My Plots</a>
 
     <br><br>
   </div>

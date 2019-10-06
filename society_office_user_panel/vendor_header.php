@@ -63,8 +63,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <span>Welcome, <strong><?= $d['name'];?></strong></span><br>
       <br>
       
-      <a href="<?=$base_url?>../index.php" class="w3-bar-item w3-text-red w3-button">
-      <i class="fa fa-home"></i> Home</a>
+      
       
       <a href="<?=$base_url?>../signout.php" class="w3-bar-item w3-button">
       <i class="fa fa-sign-out"></i> signout</a>
