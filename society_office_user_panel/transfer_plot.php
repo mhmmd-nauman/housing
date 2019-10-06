@@ -68,7 +68,7 @@ Transfer Plot
              
               ?>
               
-              <option  value="<?=$row['plot_no'].','.$row['login_id'];?>"><?=$row['plot_no']?> </option>
+              <option  value="<?=$row['plot_no'];?>"><?=$row['plot_no']?> </option>
                        
               <?php }?>
                       </select>
