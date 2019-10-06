@@ -33,7 +33,7 @@ require_once "../db.php";
                     ?>
                         <script>
                         alert('Bill Added Successfully');
-                        window.open('add_bill.php','_self');
+                        window.open('add_bill.php');
                         </script>
                     <?php
                 }

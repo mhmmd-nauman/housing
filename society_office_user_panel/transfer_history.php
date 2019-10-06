@@ -40,21 +40,21 @@ if(isset($_REQUEST['action'])){
         <th>No#</th>
         <th>Officer Name</th>
         <th>Plot No</th>
-        <th>Name</th>
+        <th>Buyer Name</th>
         <th>CNIC</th>
-        <th>Area</th>
-        <th>Location</th>
-        <th>Price</th>
+       
         <th>Date</th>
       </tr>
     </thead>
     <tbody id="myTable">
       
     <?php
-$sql = "SELECT login.name as officer_name, plot_request.plot_no,plot_request.status,plot_request.user_cnic,plot_request.user_name,plot_request.update_date as date,property_detail.unit_qty,property_detail.property_unit,property_detail.price,property_detail.property_location
-FROM ((plot_request
-INNER JOIN login ON login.login_id = plot_request.process_transfer_id)
-INNER JOIN property_detail ON plot_request.plot_no = property_detail.plot_no) WHERE plot_request.status='success'";
+// $sql = "SELECT login.name as officer_name, plot_request.plot_no,plot_request.status,plot_request.user_cnic,plot_request.user_name,plot_request.update_date as date,property_detail.unit_qty,property_detail.property_unit,property_detail.price,property_detail.property_location
+// FROM ((plot_request
+// INNER JOIN login ON login.login_id = plot_request.process_transfer_id)
+// INNER JOIN property_detail ) WHERE plot_request.status='success'";
+
+$sql = "SELECT login.name as officer_name, plot_request.plot_no,plot_request.status,plot_request.user_cnic,plot_request.user_name,plot_request.update_date as date FROM plot_request INNER JOIN login ON login.login_id = plot_request.process_transfer_id WHERE plot_request.status='success' or plot_request.status='process'";
 $result = $conn->query($sql);
 $count = 1;
 if ($result->num_rows > 0){
@@ -69,9 +69,7 @@ if ($result->num_rows > 0){
         <td><?=$row['plot_no']?></td>
         <td><?=$row['user_name']?></td>
         <td><?=$row['user_cnic']?></td>
-        <td><?=$row['property_unit']?> <?=$row['unit_qty']?></td>
-        <td><?=$row['property_location']?></td>
-        <td><?=$row['price']?></td>
+        
         <td><?=$row['date']?></td>
 
       </tr>

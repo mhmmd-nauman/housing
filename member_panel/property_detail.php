@@ -60,7 +60,7 @@ $sql =
 property_detail.price,plot_request.user_name,plot_request.plot_no,plot_request.user_cnic,plot_request.status ,plot_request.transfer_to
 FROM property_detail
 INNER JOIN plot_request ON plot_request.plot_no = property_detail.plot_no 
-WHERE plot_request.login_id = '$login_id' 
+WHERE plot_request.login_id = '$login_id' and plot_request.status!='process'
 
 
 ";
