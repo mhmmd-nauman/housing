@@ -28,20 +28,19 @@ if(isset($_REQUEST['action'])){
    
 ?>
 <!-- Header -->
-<div class="w3-container" style="margin-top:10px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot Transfer</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>History</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+<div class="w3-container" style="margin-top:20px" id="showcase">
+    <h1 class="w3-jumbo"><b>Plot Transfer History</b></h1>
+    
   </div>
 <div class="container mt-3">
   <table class="table table-bordered" id="Table">
     <thead>
       <tr>
         <th>No#</th>
-        <th>Officer Name</th>
+        <th>Owner</th>
         <th>Plot No</th>
-        <th>Buyer Name</th>
-        <th>CNIC</th>
+        <th>Transfer By</th>
+        
        
         <th>Date</th>
       </tr>
@@ -54,7 +53,10 @@ if(isset($_REQUEST['action'])){
 // INNER JOIN login ON login.login_id = plot_request.process_transfer_id)
 // INNER JOIN property_detail ) WHERE plot_request.status='success'";
 
-$sql = "SELECT login.name as officer_name, plot_request.plot_no,plot_request.status,plot_request.user_cnic,plot_request.user_name,plot_request.update_date as date FROM plot_request INNER JOIN login ON login.login_id = plot_request.process_transfer_id WHERE plot_request.status='success' or plot_request.status='process'";
+$sql = "SELECT * from plot_history "
+        . " LEFT JOIN users_details ON plot_history.owner = users_details.login_id "
+        . " LEFT JOIN login ON users_details.login_id = login.login_id "
+        . " WHERE 1 ";
 $result = $conn->query($sql);
 $count = 1;
 if ($result->num_rows > 0){
@@ -65,10 +67,10 @@ if ($result->num_rows > 0){
    
       <tr>
         <td><?=$count++?></td>
-        <td><?=$row['officer_name']?></td>
+        <td><?=$row['name']?><br><?=$row['cnic']?></td>
         <td><?=$row['plot_no']?></td>
         <td><?=$row['user_name']?></td>
-        <td><?=$row['user_cnic']?></td>
+        
         
         <td><?=$row['date']?></td>
 

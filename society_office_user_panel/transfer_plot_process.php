@@ -1,46 +1,37 @@
 <?php
+session_start();
 require_once "../db.php";
 $date = date("Y-m-d");
-$old_cnic = $_POST['old_cnic'];
- $new_cnic = $_POST['new_cnic'];
-$plot_no = $_POST['plot_no'];
- $sofficer_id = $_POST['soffocer_id'];
 
+$reciver_id = $_POST['reciver_id'];
+$plot_no = $_POST['plot_no'];
+$b_url = $_GET['b_url'];
  $query_db="SELECT *
  FROM users_details
- INNER JOIN login ON login.login_id = users_details.login_id WHERE users_details.cnic = '$old_cnic'";
+ INNER JOIN login ON login.login_id = users_details.login_id WHERE login.login_id = '$reciver_id'";
  $query1=$conn->query($query_db);
  $numrow=$query1->num_rows;
 
 
  if($numrow > 0)
  {
-    $query_db2="SELECT *
-    FROM users_details
-    INNER JOIN login ON login.login_id = users_details.login_id WHERE users_details.cnic = '$new_cnic'";
-    $query=$conn->query($query_db2);
-    $numrow=$query->num_rows;
-
-
-
-    if($numrow > 0){
-
+    
         
-        $que=$conn->query($query_db2);
-        while($row = $que->fetch_assoc()){
-        $login_id = $row['login_id'];
-        $user_name = $row['name'];
-
-       echo $first_upd = "UPDATE plot_request SET `transfer_to`='0',
-        `status`='process' WHERE `plot_no`='$plot_no' AND `login_id`='$login_id'";
+        $d=$_SESSION['uid'];
+        $login_id =  $d['login_id'];
+        $user_name =  $d['name'];
+       echo $first_upd = "UPDATE property_detail SET `owner`='$reciver_id' "
+               . " WHERE `plot_no`='$plot_no' ";
         echo "<br>";
 
-       echo $second_upd = "INSERT INTO `plot_request` (`plot_no`, `login_id`, `user_name`, `user_cnic`,`status`,`transfer_to`,`process_transfer_id`,`update_date`) 
-        VALUES ('$plot_no', '$login_id', '$user_name', '$new_cnic','success','$login_id','$sofficer_id','$date');";
+       echo $second_upd = "INSERT INTO `plot_history` 
+           (`plot_no`,`owner`, `login_id`, `user_name`, `user_cnic`,`status`,`transfer_to`,`process_transfer_id`,`update_date`) 
+            VALUES 
+            ('$plot_no','$reciver_id', '$login_id', '$user_name', '','success','','','$date');";
 
 
-        $check = "SELECT *
-        FROM plot_request WHERE `plot_no`='$plot_no' AND `login_id`='$login_id' ";
+       echo $check = "SELECT *
+        FROM property_detail WHERE `plot_no`='$plot_no'; ";
             
             if($conn->query($check)->num_rows > 0){
                 if($conn->query($first_upd)){
@@ -49,7 +40,7 @@ $plot_no = $_POST['plot_no'];
                             echo "
                 <script>
                 alert('Property Transfer Success');
-                window.location.href = 'transfer_plot.php';
+                window.location.href = '$b_url';
                 </script>
                 ";
                         }
@@ -60,35 +51,28 @@ $plot_no = $_POST['plot_no'];
                 echo "
                 <script>
                 alert('Wrong Detail! Plot no or CNIC not match');
-                window.location.href = 'transfer_plot.php';
+                window.location.href = '$b_url';
                 </script>
                 ";
             }
 
        
 
-        }
+        
 
          $login_id;
          $user_name;
 
 
-    }
-    else{
-        echo "
-     <script>
-     alert('Reciver CNIC not Register');
-     window.location.href = 'transfer_plot.php';
-     </script>
-     ";
-    }
+   // }
+    
 
  }
  else{
      echo "
      <script>
      alert('Sender CNIC not Register currently');
-     window.location.href = 'transfer_plot.php';
+    // window.location.href = '$b_url';
      </script>
      ";
  }

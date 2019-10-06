@@ -44,10 +44,11 @@ $d=$_SESSION['uid'];
         <th>Name</th>
         <th>Email</th>
         <th>Cont#</th>
-        <th>CNIC</th>
+        <th>CNIC </th>
         <th>User Type</th>
         <th>Status</th>
         <th>Action</th>
+        
       </tr>
     </thead>
     <tbody id="myTable">
@@ -104,6 +105,7 @@ if ($result->num_rows > 0):
    
             </div>
         </td>
+       
 
       </tr>
   <?php endwhile;endif;?>

@@ -17,7 +17,7 @@ $d=$_SESSION['uid'];
 <div class="w3-row-padding">
   <button class="btn btn-primary w3-green" data-toggle="modal" data-target="#myModal">
   <span class="fa fa-plus-circle"></span>
-  Add Property
+  Add New Plot
   </button>
  
 </div>

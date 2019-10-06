@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
  
   <div class="w3-card-4">
     <div class="w3-container w3-green">
-      <h2>Input Form</h2>
+      <h2>Add user to system</h2>
     </div>
 
     <form class="w3-container" action="add_sofficer.php" method="POST">

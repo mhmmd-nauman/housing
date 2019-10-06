@@ -82,7 +82,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <button class="w3-button w3-padding-large" title="Notifications">
     <i class="fa fa-commenting-o fa-2x"></i>
     <span class="w3-badge w3-right w3-small w3-green">New</span>
-    </button> Buyers Request</a>
+    </button> Booking Requests</a>
     <a href="member_detail.php" class="w3-bar-item w3-button w3-padding">
     <i class="w3-text-yellow fa fa-users fa-fw"></i>
     Member Detail</a>
@@ -91,7 +91,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     
     <a href="./sofficer_property_detail.php" class="w3-bar-item w3-button w3-padding">
-    <i class="fa fa-home w3-text-green fa-fw"></i> Plots</a>
+    <i class="fa fa-home w3-text-green fa-fw"></i> My Plots</a>
     <a href="./all_property_detail.php" class="w3-bar-item w3-button w3-padding">
     <i class="fa fa-meetup w3-text-orange fa-fw"></i> All Plots</a>
         <a href="./addproperty.php" class="w3-bar-item w3-button w3-padding">
@@ -99,9 +99,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
          <a href="./transfer_history.php" class="w3-bar-item w3-button w3-padding">
          <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Plot History</a>
          <a href="add_bill.php" class="w3-bar-item w3-button w3-padding">
-         <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Add Bill</a>
-         <a href="transfer_plot.php" class="w3-bar-item w3-button w3-padding">
-         <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Transfer Plot</a>
+         <i class="fa fa-snowflake-o w3-text-red fa-fw"></i>Manage Plot Utility Bill</a>
+         
   </div>
 </nav>
 

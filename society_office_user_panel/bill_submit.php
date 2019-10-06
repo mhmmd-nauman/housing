@@ -2,7 +2,7 @@
 session_start();
 require_once "../db.php";
     $society_officer_id =  $_POST['society_officer_id'];
-   $plot_no =  $_POST['plot_no'];
+    $plot_no =  $_POST['plot_no'];
     $desc =  $_POST['desc'];
     $bill_type =  $_POST['bill_type'];
     $total = $_POST['total'];
@@ -39,6 +39,6 @@ require_once "../db.php";
                 }
 
             }
-
+            header("location:add_bill.php");
 
 ?>

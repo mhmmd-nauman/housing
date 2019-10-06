@@ -33,13 +33,12 @@ Start  Modal of add Bill
 
 
 <div class="w3-container" style="margin-top:20px" id="showcase">
-    <h1 class="w3-jumbo"><b>Plot Bills</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Detail</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h1 class="w3-jumbo"><b>Plot Bills Detail</b></h1>
+    
     <div class="w3-row-padding">
   <button class="btn btn-primary w3-green" data-toggle="modal" data-target="#myModal">
   <span class="fa fa-plus-circle"></span>
-  Add Bill
+  Add New Bill
   </button>
  
 </div>
@@ -70,7 +69,7 @@ Start  Modal of add Bill
             <!-- Second Row -->
             <!-- Property Detail -->
             <?php
-            $sql = "SELECT * FROM plot_request where status='success' OR status ='process'";
+            $sql = "SELECT * FROM property_detail where status='active' ";
             $result = $conn->query($sql);
             $count = 1;
             
@@ -201,7 +200,7 @@ if ($result->num_rows > 0):
       <tr>
       <td style="display: none;"><?=$row['id']?></td>
     <td><?=$row['plot_no']?></td>
-    <td><?=$row['ref_no']?></td>
+    <td><?=$row['ref_no']?>1</td>
   <td><?=$row['bill_type']?></td>
   <td><?=$row['payment_status']?></td>
     <td><?=$row['total_amount']?></td>

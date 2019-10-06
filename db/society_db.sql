@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Oct 06, 2019 at 01:42 PM
--- Server version: 5.7.27-0ubuntu0.18.04.1
--- PHP Version: 7.2.19-0ubuntu0.18.04.2
+-- Host: 127.0.0.1
+-- Generation Time: Oct 06, 2019 at 07:16 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bill` (
-  `ip_address` json DEFAULT NULL,
+  `ip_address` text,
   `user_id` int(11) DEFAULT NULL,
   `total_amount` int(11) NOT NULL,
   `payment_status` enum('pending','success') NOT NULL DEFAULT 'pending',
@@ -46,8 +46,9 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`ip_address`, `user_id`, `total_amount`, `payment_status`, `bill_type`, `date`, `society_officer_id`, `user_name`, `plot_no`, `ref_no`, `descrip`, `id`) VALUES
-(NULL, 44, 9000, 'pending', 'sui gas', '2019-10-06 07:52:56', 29, NULL, '90okju', 'e52342342', 'Paid as soon as posible', 5),
-(NULL, 43, 2000, 'pending', 'severage', '2019-10-06 07:54:24', 29, NULL, 'pl90uyt', 'e4509utr', 'paid as soon as posible', 6);
+(NULL, 29, 100, 'success', 'sui gas', '2019-10-06 17:10:22', 29, NULL, '197', '22', 'zzX', 1),
+(NULL, 29, 100, 'pending', 'sui gas', '2019-10-06 17:11:50', 29, NULL, '197', '22', 'zxc', 2),
+(NULL, 29, 66, 'pending', 'sui gas', '2019-10-06 17:12:57', 29, NULL, '197', '22', 'zXZX20', 3);
 
 -- --------------------------------------------------------
 
@@ -83,9 +84,40 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) VALUES
 (1, 'Saima', '1234', 'saima@gmail.com', 'admin', 'Active'),
-(29, 'Ghazanfar Ali', '1234', 'ghazanfar@gmail.com', 'society_officer', 'Active'),
-(43, 'Alaodeen', '1234', 'alaodeen@gmail.com', 'member', 'Active'),
-(44, 'Ali Raza', 'aliraza123', 'aliraza.k2@gmail.com', 'member', 'Active');
+(29, 'Society Officer', '1234', 'society_officer@gmail.com', 'society_officer', 'Active'),
+(43, 'Member 1', '1234', 'm1@gmail.com', 'member', 'Active'),
+(44, 'Member 2', '1234', 'm2@gmail.com', 'member', 'Active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plot_history`
+--
+
+CREATE TABLE `plot_history` (
+  `id` int(11) NOT NULL,
+  `owner` int(11) DEFAULT NULL,
+  `plot_no` varchar(50) NOT NULL,
+  `login_id` int(50) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `user_cnic` varchar(50) NOT NULL,
+  `status` enum('success','pending','process') NOT NULL DEFAULT 'pending',
+  `transfer_to` varchar(50) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `process_transfer_id` varchar(50) DEFAULT NULL,
+  `update_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `plot_history`
+--
+
+INSERT INTO `plot_history` (`id`, `owner`, `plot_no`, `login_id`, `user_name`, `user_cnic`, `status`, `transfer_to`, `date`, `process_transfer_id`, `update_date`) VALUES
+(1, 43, '195', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:19:36', '', '2019-10-06'),
+(2, 43, '195', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:26:01', '', '2019-10-06'),
+(3, 43, '195', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:27:12', '', '2019-10-06'),
+(4, 44, '195', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:27:40', '', '2019-10-06'),
+(5, 43, '196', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:29:54', '', '2019-10-06');
 
 -- --------------------------------------------------------
 
@@ -95,6 +127,7 @@ INSERT INTO `login` (`login_id`, `name`, `password`, `email`, `type`, `status`) 
 
 CREATE TABLE `plot_request` (
   `id` int(11) NOT NULL,
+  `owner` int(11) DEFAULT NULL,
   `plot_no` varchar(50) NOT NULL,
   `login_id` int(50) NOT NULL,
   `user_name` varchar(50) NOT NULL,
@@ -110,12 +143,12 @@ CREATE TABLE `plot_request` (
 -- Dumping data for table `plot_request`
 --
 
-INSERT INTO `plot_request` (`id`, `plot_no`, `login_id`, `user_name`, `user_cnic`, `status`, `transfer_to`, `date`, `process_transfer_id`, `update_date`) VALUES
-(2, '90okju', 44, 'Ali Raza', '4130345134512', 'success', '44', '2019-10-06 12:49:50', '29', '2019-10-06'),
-(3, 'pl90uyt', 44, 'Ali Raza', '4130345134512', 'pending', NULL, '2019-10-06 12:49:54', NULL, NULL),
-(4, '90okju', 43, 'Alaodeen', '312094134654', 'process', '0', '2019-10-06 12:50:13', NULL, NULL),
-(5, 'pl90uyt', 43, 'Alaodeen', '312094134654', 'success', '43', '2019-10-06 12:50:18', '29', '2019-10-06'),
-(8, '90okju', 43, 'Alaodeen', '312094134654', 'success', '43', '2019-10-06 13:33:34', '29', '2019-10-06');
+INSERT INTO `plot_request` (`id`, `owner`, `plot_no`, `login_id`, `user_name`, `user_cnic`, `status`, `transfer_to`, `date`, `process_transfer_id`, `update_date`) VALUES
+(1, 43, '10', 0, '', '', 'success', '', '2019-10-06 19:39:12', '', '2019-10-06'),
+(2, 43, '10', 0, '', '', 'success', '', '2019-10-06 20:09:57', '', '2019-10-06'),
+(3, 43, '10', 0, '', '', 'success', '', '2019-10-06 20:14:26', '', '2019-10-06'),
+(4, 43, '10', 29, '', '', 'success', '', '2019-10-06 20:15:04', '', '2019-10-06'),
+(5, 43, '10', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:15:35', '', '2019-10-06');
 
 -- --------------------------------------------------------
 
@@ -126,8 +159,6 @@ INSERT INTO `plot_request` (`id`, `plot_no`, `login_id`, `user_name`, `user_cnic
 CREATE TABLE `property_detail` (
   `id` int(11) NOT NULL,
   `login_id` int(11) NOT NULL,
-  `purpose` varchar(100) DEFAULT NULL,
-  `property_type` varchar(100) NOT NULL,
   `property_title` varchar(100) NOT NULL,
   `property_unit` varchar(100) NOT NULL,
   `unit_qty` int(11) NOT NULL,
@@ -137,22 +168,20 @@ CREATE TABLE `property_detail` (
   `property_city` varchar(100) DEFAULT NULL,
   `property_location` varchar(100) NOT NULL,
   `transfer_login_ids` varchar(200) DEFAULT NULL,
-  `login_cnic` varchar(200) DEFAULT NULL,
+  `owner` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `status` enum('active','deactive') NOT NULL DEFAULT 'active',
-  `sold_date` date DEFAULT NULL,
-  `buyer_cnic` varchar(50) DEFAULT NULL,
-  `buyer_name` varchar(50) DEFAULT NULL
+  `sold_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `property_detail`
 --
 
-INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `property_title`, `property_unit`, `unit_qty`, `price`, `property_desc`, `plot_no`, `property_city`, `property_location`, `transfer_login_ids`, `login_cnic`, `image`, `status`, `sold_date`, `buyer_cnic`, `buyer_name`) VALUES
-(1, 29, '', '', 'Commercial Plot', 'marla', 10, 300000, 'good plot for investor', 'pl90uyt', '', 'Allama Iqbal town , Phase 1', NULL, NULL, '', 'deactive', '2019-10-06', '312094134654', NULL),
-(2, 29, '', '', 'cornert Plot', 'kanal', 1, 809996, 'Severage, Gas&lt;telephone', '90okju', '', '1A block Q DHA', NULL, NULL, '', 'deactive', '2019-10-06', '4130345134512', NULL),
-(3, 29, '', '', 'living plot', 'acer', 18, 600000, 'near HBL chok', 'lsa542', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL, NULL, NULL);
+INSERT INTO `property_detail` (`id`, `login_id`, `property_title`, `property_unit`, `unit_qty`, `price`, `property_desc`, `plot_no`, `property_city`, `property_location`, `transfer_login_ids`, `owner`, `image`, `status`, `sold_date`) VALUES
+(1, 29, 'Commercial Plot', 'marla', 10, 300000, 'good plot for investor', '195', '', 'Allama Iqbal town , Phase 1', NULL, 44, '', 'deactive', '2019-10-06'),
+(2, 29, 'cornert Plot', 'kanal', 1, 809996, 'Severage, Gas&lt;telephone', '196', '', '1A block Q DHA', NULL, 43, '', 'deactive', '2019-10-06'),
+(3, 29, 'living plot', 'acer', 18, 600000, 'near HBL chok', '197', '', 'Allama Iqbal town , Phase 2', NULL, NULL, '', 'active', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,6 +191,7 @@ INSERT INTO `property_detail` (`id`, `login_id`, `purpose`, `property_type`, `pr
 
 CREATE TABLE `transfer_track` (
   `id` int(11) NOT NULL,
+  `login_id` int(11) DEFAULT NULL,
   `old_cnic` varchar(20) NOT NULL,
   `new_cnic` varchar(20) NOT NULL,
   `plot_no` int(11) NOT NULL,
@@ -216,6 +246,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`login_id`);
 
 --
+-- Indexes for table `plot_history`
+--
+ALTER TABLE `plot_history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `plot_request`
 --
 ALTER TABLE `plot_request`
@@ -247,7 +283,7 @@ ALTER TABLE `users_details`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `bill_track`
 --
@@ -259,10 +295,15 @@ ALTER TABLE `bill_track`
 ALTER TABLE `login`
   MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
+-- AUTO_INCREMENT for table `plot_history`
+--
+ALTER TABLE `plot_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `plot_request`
 --
 ALTER TABLE `plot_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `property_detail`
 --

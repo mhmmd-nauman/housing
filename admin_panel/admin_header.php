@@ -73,7 +73,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="add_sofficer.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-plus fa-fw"></i>Add Society Officer</a>
+    <a href="add_sofficer.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-plus fa-fw"></i>Add User</a>
     <!-- <a href="new_user_req.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-handshake-o w3-text-red fa-fw"></i>   New users Request <sup> <span class="badge fa-2x badge-pill badge-danger">4<p id="new_req_alert"></p></span></sup></a> -->
     <a href="member_detail.php" class="w3-bar-item w3-button w3-padding"><i class="w3-text-yellow fa fa-users fa-fw"></i>Member Detail</a>
 
