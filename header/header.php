@@ -52,7 +52,7 @@ require_once "base_url.php";
         <!-- Header -->
         <header class="w3-container w3-center w3-padding-48 w3-white">
           
-          <img src="<?=$base_url?>assets/img/logo.png" alt="Housing" width="10%"> <h1 class="w3-xxxlarge"><b>Housing System</b></h1>
+          <img src="<?=$base_url?>assets/img/logo.png" alt="Housing" width="10%"> <h1 class="w3-xxxlarge"><b>Online Housing Society Office Management System</b></h1>
           <h6><span class="w3-tag w3-wide">Plots Sell & Buy</span></h6>
           <div class="w3-bar w3-border">
             <a href="<?=$base_url?>index.php" class="w3-bar-item w3-button">Home</a>

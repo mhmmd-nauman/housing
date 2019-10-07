@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2019 at 07:16 PM
+-- Generation Time: Oct 07, 2019 at 05:05 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -60,7 +60,8 @@ CREATE TABLE `bill_track` (
   `id` int(11) NOT NULL,
   `bill_id` int(11) NOT NULL,
   `ref_no` varchar(30) NOT NULL,
-  `total` int(11) NOT NULL
+  `total` int(11) NOT NULL,
+  `payment_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -148,7 +149,8 @@ INSERT INTO `plot_request` (`id`, `owner`, `plot_no`, `login_id`, `user_name`, `
 (2, 43, '10', 0, '', '', 'success', '', '2019-10-06 20:09:57', '', '2019-10-06'),
 (3, 43, '10', 0, '', '', 'success', '', '2019-10-06 20:14:26', '', '2019-10-06'),
 (4, 43, '10', 29, '', '', 'success', '', '2019-10-06 20:15:04', '', '2019-10-06'),
-(5, 43, '10', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:15:35', '', '2019-10-06');
+(5, 43, '10', 29, 'Society Officer', '', 'success', '', '2019-10-06 20:15:35', '', '2019-10-06'),
+(6, NULL, '195', 43, 'Member 1', '312094134654', 'pending', NULL, '2019-10-06 22:32:33', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -303,7 +305,7 @@ ALTER TABLE `plot_history`
 -- AUTO_INCREMENT for table `plot_request`
 --
 ALTER TABLE `plot_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `property_detail`
 --

@@ -24,7 +24,7 @@ if(isset($_SESSION['uid'])){
       <img src="<?=$base_url?>assets/img/banner10.jpg" alt="Los Angeles" width="1100" height="500">
       <div class="carousel-caption">
         
-        <h2>We had such a great time in LA!</h2>
+        <h2></h2>
       </div>
     </div>
     <div class="carousel-item">
