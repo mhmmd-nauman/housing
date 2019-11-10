@@ -4,19 +4,16 @@ require_once "../db.php";
 if(isset($_REQUEST['action'])){
 switch($_REQUEST['action']){
 case"block":
-$sql = " update `login` set status = 'blocked' where login_id = '".$_REQUEST['id']."';";
-$conn->query($sql);
+    $sql = " update `login` set status = 'blocked' where login_id = '".$_REQUEST['id']."';";
+    $conn->query($sql);
 break;
-case"approve":
-$sql = " update `login` set status = 'Active' where login_id = '".$_REQUEST['id']."';";
-$conn->query($sql);
-break;
+
 case"delete":
-$sql = " delete from `login` where login_id = '".$_REQUEST['id']."';"
-. " ";
-$conn->query($sql);
-$sql = "delete from `users_details` where login_id = '".$_REQUEST['id']."';";
-$conn->query($sql);
+    $sql = " delete from `login` where login_id = '".$_REQUEST['id']."';"
+    . " ";
+    $conn->query($sql);
+    $sql = "delete from `users_details` where login_id = '".$_REQUEST['id']."';";
+    $conn->query($sql);
 break;
 }
 }
@@ -51,7 +48,8 @@ $d=$_SESSION['uid'];
       <?php
       $sql = "SELECT *, login.login_id as id FROM `login` "
       . " LEFT JOIN users_details ON users_details.login_id = login.login_id"
-      . " where type in('admin') "
+      . " where "
+      . " type in ('admin') "
       . ";";
       $result = $conn->query($sql);
       if ($result->num_rows > 0):
@@ -77,16 +75,14 @@ $d=$_SESSION['uid'];
             </button>
             
             <ul class = "dropdown-menu" role = "menu" aria-labelledby = "dropdownMenu1">
-              <li role = "presentation">
-                <a role = "menuitem" tabindex = "-1" href = "?action=approve&id=<?=$row['id']?>" onclick="return confirmAction();">Approve</a>
-              </li>
-              <li role = "presentation" class = "divider"></li>
+              
+              
               <li role = "presentation">
                 <a role = "menuitem" tabindex = "-1" href = "?action=block&id=<?=$row['id']?>" onclick="return confirmAction();">Block</a>
               </li>
               <li role = "presentation" class = "divider"></li>
               <li role = "presentation">
-                <a role = "menuitem" tabindex = "-1" href = "?action=edit&id=<?=$row['id']?>" >
+                <a role = "menuitem" tabindex = "-1" href = "edit_user.php?id=<?=$row['id']?>" >
                   Edit
                 </a>
               </li>

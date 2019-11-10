@@ -79,10 +79,7 @@ if(isset($_SESSION['uid'])){
     <!-- Middle Column -->
     <div class="w3-col m10">
        <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Available Plots</h3>
-    <p class="w3-text-red w3-wide">* Note: you must <a href="./login.php" class="w3-text-blue">login</a> before purchasing plot.</p>
-  </div>
+  
     <div class="w3-row-padding">
       
       
@@ -95,66 +92,7 @@ if(isset($_SESSION['uid'])){
     </div>
     
     <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-        <p>ADS</p>
-      </div>
-      <br>
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <img src="<?=$base_url?>assets/ads/ad1.gif" alt="Your Own home" width="230px" height="230px">
-          <!-- <p>Upcoming Events:</p>
-          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Holiday</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-        </div>
-      </div>
-      <br>
-      
-      
-      <br>
-      
-      
-      
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <img src="<?=$base_url?>assets/ads/ad2.gif" alt="Your Own home" width="230px" height="230px">
-          <!-- <p>Upcoming Events:</p>
-          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Holiday</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-        </div>
-      </div>
-      <br>
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-row">
-          <div class="w3-col m6">
-            <div class="w3-container">
-              <img src="<?=$base_url?>assets/ads/ad10.gif" alt="Your Own home" width="110px" height="330px">
-              <!-- <p>Upcoming Events:</p>
-              <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-              <p><strong>Holiday</strong></p>
-              <p>Friday 15:00</p>
-              <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-            </div>
-          </div>
-          <div class="w3-col m6">
-            <div class="w3-container">
-              <img src="<?=$base_url?>assets/ads/ad4.gif" alt="Your Own home" width="120px" height="330px">
-              <!-- <p>Upcoming Events:</p>
-              <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-              <p><strong>Holiday</strong></p>
-              <p>Friday 15:00</p>
-              <p><button class="w3-button w3-block w3-theme-l4">Info</button></p> -->
-            </div>
-          </div>
-          
-        </div>
-      </div>
-      <!-- End Right Column -->
-    </div>
+   
     
     <!-- End Grid -->
   </div>
@@ -229,7 +167,7 @@ if(isset($_SESSION['uid'])){
           $('#load_data').append(data);
           if(data == '')
           {
-             $('#load_data_message').html("<button class='w3-button  w3-wide w3-white w3-border w3-border-blue w3-block'>No more post.......</button>");
+             $('#load_data_message').html("");
              action = 'active';
           }
           else
